@@ -9,7 +9,6 @@ class Dataset:
     def __init__(self, root):
         self.root = root
         self.classes = []
-        self.transform = T.RandomHorizontalFlip(p=0.5)
         self.imgs = []
         self.cls = []
         for pasta in os.listdir(self.root):
@@ -24,7 +23,7 @@ class Dataset:
         image = Image.open(img_path)
         image_array = np.array(image)
         label = self.cls[key]
-        return image_array, label
+        return image_array, label, image
 
     def __len__(self):
         return len(self.imgs)
@@ -34,10 +33,15 @@ class Dataset:
 
 def main ():
     teste = Dataset('/media/vitor/data/CNN_letters_custom')
-    img_get_item, label = teste.__getitem__(2200)
-    img = transform(image)
+    img_get_item, label, image = teste.__getitem__(2200)
+    image_converted = Image.fromarray(img_get_item)
+    transformHorizontal = T.RandomHorizontalFlip(p=0.5)
+    transformVertical = T.RandomVerticalFlip(p=0.5)
+    img = transformHorizontal(image_converted)
+    imgVertical = transformVertical(image_converted)
     print(label)
-    plt.imshow(img_get_item)
+    plt.imshow(img)
+    plt.imshow(imgVertical)
     plt.show()
     print(teste.classes[label])
 
