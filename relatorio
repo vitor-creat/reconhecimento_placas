@@ -1,0 +1,16 @@
+    # teste = Dataset('/media/vitor/data/CNN_letters_custom')
+    # img_get_item, label, image = teste.__getitem__(2200)
+    # image_converted = Image.fromarray(img_get_item)
+    # transformHorizontal = T.RandomHorizontalFlip(p=0.5)
+    # transformVertical = T.RandomVerticalFlip(p=0.5)
+    # img = transformHorizontal(image_converted)
+    # # imgVertical = transformVertical(image_converted)
+    # print(label)
+    # plt.imshow(img)
+    # # plt.imshow(imgVertical)
+    # plt.show()
+    # print(teste.classes[label])
+
+
+# enquanto eu fazia o codigo passou na minha mente a ideia de retornar o variavel imagem do metodo "get_item" da classe Dataset, mas ao fazer uma pesquisa, descobri uma função na biblioteca Pillow, que poderia transformar uma np.array em uma Pillow Imagem
+# o atributo é o "Image.fromarray()". Essa função recebe o obj que é o objeto com a interface do nosso array e retorna um objeto imagem
