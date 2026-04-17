@@ -31,19 +31,30 @@ class Dataset:
 
 
 
+def dataLoader(i, n, dataset):
+    #slice
+    dataset.__getitem__(n)
+    
+    return 
+
+
+
+
 def main ():
     teste = Dataset('/media/vitor/data/CNN_letters_custom')
-    img_get_item, label, image = teste.__getitem__(2200)
-    image_converted = Image.fromarray(img_get_item)
-    transformHorizontal = T.RandomHorizontalFlip(p=0.5)
-    transformVertical = T.RandomVerticalFlip(p=0.5)
-    img = transformHorizontal(image_converted)
-    imgVertical = transformVertical(image_converted)
-    print(label)
-    plt.imshow(img)
-    plt.imshow(imgVertical)
-    plt.show()
-    print(teste.classes[label])
+    # img_get_item, label, image = teste.__getitem__(2200)
+    # converted_image = Image.fromarray(img_get_item)
+    # transformHorizontal = T.RandomHorizontalFlip(p=0.5)
+    # transformVertical = T.RandomVerticalFlip(p=0.5)
+    # img = transformHorizontal(converted_image)
+    # imgVertical = transformVertical(converted_image)
+    # print(label)
+    # plt.imshow(img)
+    # plt.imshow(imgVertical)
+    # plt.show()
+    # print(teste.classes[label])
+
+    dataLoader(1,2200,teste)
 
 
 if "__main__" == __name__:
