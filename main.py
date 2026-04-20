@@ -32,16 +32,22 @@ class Dataset:
 
 
 def dataLoader(i, n, dataset):
-    #slice
-    dataset.__getitem__(n)
+    img_array_list= []
+    for x in range(i, 1+n):
+        image_array, label, image= dataset.__getitem__(x)
+
+        image = image.resize((100,100))
+        image_array = np.array(image)
+
+        img_array_list.append(image_array)
     
-    return 
-
-
-
+    img_stack = np.stack(img_array_list)
+    print(img_stack.shape)
+    return  img_stack
 
 def main ():
-    teste = Dataset('/media/vitor/data/CNN_letters_custom')
+    #teste = Dataset('/media/vitor/data/CNN_letters_custom')
+    teste = Dataset('/home/vitor/Documents/CNN_letters_custom')
     # img_get_item, label, image = teste.__getitem__(2200)
     # converted_image = Image.fromarray(img_get_item)
     # transformHorizontal = T.RandomHorizontalFlip(p=0.5)
