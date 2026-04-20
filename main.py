@@ -60,7 +60,12 @@ def main ():
     # plt.show()
     # print(teste.classes[label])
 
-    dataLoader(1,2200,teste)
+    dataload = dataLoader(1,2200,teste)
+    for i in dataload:
+        plt.imshow(i)
+        plt.show()
+
+
 
 
 if "__main__" == __name__:
