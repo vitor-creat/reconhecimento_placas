@@ -60,13 +60,19 @@ def main ():
     # plt.show()
     # print(teste.classes[label])
 
+    # dataload = dataLoader(1,2200,teste)
+    # for i in dataload:
+    #     plt.imshow(i)
+    #     plt.show()
+
     dataload = dataLoader(1,2200,teste)
     for i in dataload:
-        plt.imshow(i)
-        plt.show()
-
-
-
+        for _ in range(4):
+            transform = T.RandomVerticalFlip(p=0.7)
+            arrayForImage = Image.fromarray(i)
+            img_transform = transform(arrayForImage)
+            plt.imshow(img_transform)
+            plt.show()
 
 if "__main__" == __name__:
     main()
