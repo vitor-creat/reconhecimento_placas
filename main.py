@@ -4,6 +4,7 @@ import torch
 from torchvision.transforms import v2
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
+from model import CnnModel
 def main():
     listImage = []
     
@@ -23,8 +24,15 @@ def main():
     datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_val, transforms)
 
     dataLoaderTrain = DataLoader(datasetTrain, 16, True)
-    dataLoaderVal = DataLoader(dataLoaderVal, 1, False)
-    print(len(datasetTrain), len(datasetVal))
+    dataLoaderVal = DataLoader(datasetVal, 1, False)
+
+    testCnn = CnnModel()
+    image, label = next(iter(dataLoaderTrain))
+    resultado = testCnn(image)
+
+    maior = torch.argmax(resultado, dim=1)
+    print(testCnn)
+    print(resultado.shape, maior.shape)
 
 if __name__ == "__main__":
     main()
