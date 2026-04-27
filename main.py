@@ -5,6 +5,8 @@ from torchvision.transforms import v2
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
 from model import CnnModel
+from torch.optim import SGD
+from torch.nn import CrossEntropyLoss
 def main():
     listImage = []
     
@@ -33,6 +35,13 @@ def main():
     maior = torch.argmax(resultado, dim=1)
     print(testCnn)
     print(resultado.shape, maior.shape)
+    print(maior)
+    print(label)
+    epocas = 10
+    learning_rate = 0.002
+    for i in range(epocas):
+        for image, label in dataLoaderTrain:
+            image = image.cuda()
 
 if __name__ == "__main__":
     main()

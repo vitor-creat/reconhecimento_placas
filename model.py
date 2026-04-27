@@ -6,17 +6,17 @@ class CnnModel(nn.Module):
         super().__init__(*args, **kwargs)
         self.conv = nn.Conv2d(3,32, (3,3), bias=False)
         self.cls = nn.Sequential(
-            nn.AdaptiveAvgPool2d((1,1)),
-            nn.Linear(32,2)
+            nn.Flatten(),
+            nn.Linear(32*222*222,2)
         )
 
 
 
 
     def forward(self, x):
-        print(x.shape)
+        #print(x.shape)
         x = self.conv(x)
-        # print(x.shape)
+        #print(x.shape)
         x = self.cls(x)
-        print(x.shape)
+        #print(x.shape)
         return x
