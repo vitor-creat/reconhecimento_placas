@@ -4,10 +4,19 @@ import torch.nn as nn
 class CnnModel(nn.Module):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.conv = nn.Conv2d(3,32, (3,3), bias=False)
+        self.backbone = nn.Sequential(
+            ConvolucionBlock(3,32),
+            nn.MaxPool2d((2,2)),
+            ConvolucionBlock(32,64),
+            nn.MaxPool2d((2,2)),
+            ConvolucionBlock(64,128),
+            nn.MaxPool2d((2,2)),
+            ConvolucionBlock(128,256),
+            nn.MaxPool2d((2,2))
+            )
         self.cls = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(32*222*222,2)
+            nn.Linear(256*14*14,2)
         )
 
 
@@ -15,8 +24,23 @@ class CnnModel(nn.Module):
 
     def forward(self, x):
         #print(x.shape)
-        x = self.conv(x)
-        #print(x.shape)
+        x = self.backbone(x)
+        # print(x.shape)
+        # input()
         x = self.cls(x)
         #print(x.shape)
         return x
+
+# 3 32
+class ConvolucionBlock(nn.Module):
+    def __init__(self, inchannels, outchannels):
+        super().__init__()
+        self.block = nn.Sequential(
+            nn.Conv2d(inchannels,outchannels, (3,3), padding="same"),
+            nn.ReLU(inplace=True),
+            nn.BatchNorm2d(outchannels),
+
+        )
+    def forward(self, x):
+        
+        return self.block(x)
