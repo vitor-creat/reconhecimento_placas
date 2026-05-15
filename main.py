@@ -8,11 +8,17 @@ from model import CnnModel
 from torch.optim import SGD
 from torch.nn import CrossEntropyLoss
 import numpy as np
+import argparse
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--epocas", default=16, required=False, type=int)
+
+    args = parser.parse_args()
+
     listImage = []
     """/home/vitor/Documents/data/dogs-vs-cats/train"""
     """/media/vitor/data/dogs-vs-cats/train"""
-    for i in os.listdir("/home/vitor/Documents/data/dogs-vs-cats/train"):
+    for i in os.listdir("/media/vitor/data/dogs-vs-cats/train"):
         listImage.append(i)
     transforms = v2.Compose([
     v2.ToImage(),
@@ -26,8 +32,8 @@ def main():
 )
     """/home/vitor/Documents/data/dogs-vs-cats/"""
     """/media/vitor/data/dogs-vs-cats/"""
-    datasetTrain = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',X_train, transforms)
-    datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',X_val, transforms)
+    datasetTrain = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_train, transforms)
+    datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_val, transforms)
 
     dataLoaderTrain = DataLoader(datasetTrain, 16, True)
     dataLoaderVal = DataLoader(datasetVal, 1, False)
@@ -36,13 +42,13 @@ def main():
     image, label = next(iter(dataLoaderTrain))
     resultado = Cnn(image)
 
- 
+    print(args)
     print(Cnn)
     # print(resultado.shape, maior.shape)
     # print(resultado[0], maior[0])
     # print(maior)
     # print(label)
-    epocas = 16
+    epocas = args.epocas
     learning_rate = 0.002
     minLoss = 5.0
     Cnn = Cnn.cuda()
@@ -97,26 +103,7 @@ def main():
     print(f"Fim da epoca {epoca}")
 
 
-    device = torch.device("cuda")
-    LoadModel = CnnModel()
-    LoadModel.load_state_dict(torch.load('Model.pth'))
-    LoadModel.to(device)
-    LoadModel.eval() 
-    accuracyFinal = 0.0
-    totalLoss = 0.0
-    with torch.no_grad():
-        for iteracao, (image, label) in enumerate(dataLoaderVal):
-            image = image.cuda()
-            label = label.cuda()
-            inferencia = LoadModel(image)
-            loss = criterio(inferencia, label)
-            totalLoss += loss
-            maior = torch.argmax(inferencia, dim=1)
-            tensorCompare = maior == label
-            accuracy = torch.sum(tensorCompare)
-            accuracyFinal += accuracy
-        accuracyFinal = accuracyFinal / len(dataLoaderVal)
-        print(f"acurácia final: {accuracyFinal.item()}")
+
 
 
 
