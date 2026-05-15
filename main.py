@@ -10,8 +10,9 @@ from torch.nn import CrossEntropyLoss
 import numpy as np
 def main():
     listImage = []
-    
-    for i in os.listdir("/media/vitor/data/dogs-vs-cats/train"):
+    """/home/vitor/Documents/data/dogs-vs-cats/train"""
+    """/media/vitor/data/dogs-vs-cats/train"""
+    for i in os.listdir("/home/vitor/Documents/data/dogs-vs-cats/train"):
         listImage.append(i)
     transforms = v2.Compose([
     v2.ToImage(),
@@ -23,8 +24,10 @@ def main():
     X_train, X_val = train_test_split(
     listImage, test_size=0.20, shuffle=False
 )
-    datasetTrain = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_train, transforms)
-    datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_val, transforms)
+    """/home/vitor/Documents/data/dogs-vs-cats/"""
+    """/media/vitor/data/dogs-vs-cats/"""
+    datasetTrain = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',X_train, transforms)
+    datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',X_val, transforms)
 
     dataLoaderTrain = DataLoader(datasetTrain, 16, True)
     dataLoaderVal = DataLoader(datasetVal, 1, False)
