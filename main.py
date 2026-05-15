@@ -69,7 +69,7 @@ def main():
 
         perdaTotal /= len(dataLoaderTrain)
         
-        print(f"a perda por epoca no treino é: {perdaTotal}")
+        # print(f"a perda por epoca no treino é: {perdaTotal}")
 
         Cnn.eval()
         with torch.no_grad():
