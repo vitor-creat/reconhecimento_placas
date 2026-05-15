@@ -42,9 +42,9 @@ def main():
     # print(resultado[0], maior[0])
     # print(maior)
     # print(label)
-    epocas = 10
+    epocas = 16
     learning_rate = 0.002
-    minLoss = 50.0
+    minLoss = 5.0
     Cnn = Cnn.cuda()
     criterio = CrossEntropyLoss().cuda()
     otimizador = SGD(Cnn.parameters(),learning_rate)
