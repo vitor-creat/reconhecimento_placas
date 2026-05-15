@@ -94,7 +94,30 @@ def main():
             torch.save(Cnn.state_dict(), 'Model.pth')
             print(f"Melhor modelo encontrado!!!")
         print(f"acurácia validação: {accuracyTotal.item()}, Perda Total na validação {perdaTotalVal.item()}")
-            
+    print(f"Fim da epoca {epoca}")
+
+
+    device = torch.device("cuda")
+    LoadModel = CnnModel()
+    LoadModel.load_state_dict(torch.load('Model.pth'))
+    LoadModel.to(device)
+    LoadModel.eval() 
+    accuracyFinal = 0.0
+    totalLoss = 0.0
+    with torch.no_grad():
+        for iteracao, (image, label) in enumerate(dataLoaderVal):
+            image = image.cuda()
+            label = label.cuda()
+            inferencia = LoadModel(image)
+            loss = criterio(inferencia, label)
+            totalLoss += loss
+            maior = torch.argmax(inferencia, dim=1)
+            tensorCompare = maior == label
+            accuracy = torch.sum(tensorCompare)
+            accuracyFinal += accuracy
+        accuracyFinal = accuracyFinal / len(dataLoaderVal)
+        print(f"acurácia final: {accuracyFinal.item()}")
+
 
 
         
