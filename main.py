@@ -12,6 +12,7 @@ import argparse
 import random
 
 def main():
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--epocas", default=16, required=False, type=int)
     parser.add_argument("--lr", default=0.001, type=float)
@@ -19,25 +20,46 @@ def main():
     parser.add_argument("--fine_tuning", default=False, type=bool)
     args = parser.parse_args()
 
-    listImage = []
-    """/home/vitor/Documents/data/dogs-vs-cats/train"""
-    """/media/vitor/data/dogs-vs-cats/train"""
-    for i in os.listdir("/media/vitor/data/dogs-vs-cats/train"):
-        listImage.append(i)
-    transforms = v2.Compose([
-    v2.ToImage(),
-    v2.RandomResizedCrop(size=(224, 224), antialias=True),
-    v2.RandomHorizontalFlip(p=0.5),
-    v2.ToDtype(torch.float32, scale=True),
-    v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-])
-    X_train, X_val = train_test_split(
-    listImage, test_size=0.20, shuffle=False
-)
-    """/home/vitor/Documents/data/dogs-vs-cats/"""
-    """/media/vitor/data/dogs-vs-cats/"""
-    datasetTrain = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_train, transforms)
-    datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_val, transforms)
+    #Parametros
+    epocas = args.epocas
+    learning_rate = args.lr
+    batch_size = args.batch
+    fine_tuning = args.fine_tuning
+    minLoss = 5.0
+    
+    file_list = os.listdir("/home/vitor/Documents/data/dogs-vs-cats/train")
+    random.shuffle(file_list)
+    
+    files_train = file_list[:int(len(file_list)*0.8)]
+    files_val = file_list[int(len(file_list)*0.8):]
+
+    if not os.path.exists("val_files.txt"):
+        with open ('val_files.txt', "w") as f:
+            for file in files_val:
+                f.write(file + '\n')
+
+    if fine_tuning == False:
+
+        # listImage = []
+        """/home/vitor/Documents/data/dogs-vs-cats/train"""
+        """/media/vitor/data/dogs-vs-cats/train"""
+        # for i in os.listdir(""):
+        #     listImage.append(i)
+
+        transforms = v2.Compose([
+        v2.ToImage(),
+        v2.RandomResizedCrop(size=(224, 224), antialias=True),
+        v2.RandomHorizontalFlip(p=0.5),
+        v2.ToDtype(torch.float32, scale=True),
+        v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+    ])
+    #     X_train, X_val = train_test_split(
+    #     listImage, test_size=0.20, shuffle=False
+    # )
+        """/home/vitor/Documents/data/dogs-vs-cats/"""
+        """/media/vitor/data/dogs-vs-cats/"""
+        datasetTrain = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',files_train, transforms)
+        datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',files_val, transforms)
 
     dataLoaderTrain = DataLoader(datasetTrain, 16, True)
     dataLoaderVal = DataLoader(datasetVal, 1, False)
