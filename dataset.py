@@ -17,6 +17,7 @@ class DatasetCatAndDog(Dataset):
         #criar uma varivael que diga o label, se é cat(0) ou dog(1)
         label = self.str2Class[imageName[0:3]]
         img_path = os.path.join(self.root, "train",imageName)
+        print(img_path)
         loadImage = Image.open(img_path)
         npImage = np.array(loadImage)
         if self.transforms:
