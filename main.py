@@ -64,16 +64,16 @@ def main():
         dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
         dataLoaderVal = DataLoader(datasetVal, 1, False)
 
-    Cnn = CnnModel()
-    image, label = next(iter(dataLoaderTrain))
+        Cnn = CnnModel()
+        image, label = next(iter(dataLoaderTrain))
         resultado = Cnn(image)
 
-    print(args)
-    print(Cnn)
-    # print(resultado.shape, maior.shape)
-    # print(resultado[0], maior[0])
-    # print(maior)
-    # print(label)
+        print(args)
+        print(Cnn)
+        # print(resultado.shape, maior.shape)
+        # print(resultado[0], maior[0])
+        # print(maior)
+        # print(label)
     epocas = args.epocas
     learning_rate = 0.002
     minLoss = 5.0
