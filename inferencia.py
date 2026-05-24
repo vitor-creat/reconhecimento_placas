@@ -37,10 +37,12 @@ def loadBatch(modelo):
         listImage = []
         device = torch.device("cuda")
         modelo.to(device)
-        """/home/vitor/Documents/data/dogs-vs-cats/train"""
-        """/media/vitor/data/dogs-vs-cats/train"""
-        for i in os.listdir("/home/vitor/Documents/data/dogs-vs-cats/train"):
-            listImage.append(i)
+
+        files_val = []
+        with open('val_files.txt', 'r') as f:
+            for line in f:
+                files_val.append(line.strip())
+
         transforms = v2.Compose([
         v2.ToImage(),
         v2.Resize((224,224)),
