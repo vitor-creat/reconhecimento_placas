@@ -12,7 +12,9 @@ import argparse
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--epocas", default=16, required=False, type=int)
-
+    parser.add_argument("--lr", default=0.001, type=float)
+    parser.add_argument("--batch", default=16 ,type=int)
+    parser.add_argument("--fine_tuning", default=False, type=bool)
     args = parser.parse_args()
 
     listImage = []
