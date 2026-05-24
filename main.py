@@ -74,66 +74,113 @@ def main():
         # print(resultado[0], maior[0])
         # print(maior)
         # print(label)
-    epocas = args.epocas
-    learning_rate = 0.002
-    minLoss = 5.0
-    Cnn = Cnn.cuda()
-    criterio = CrossEntropyLoss().cuda()
-    otimizador = SGD(Cnn.parameters(),learning_rate)
-    print(len(dataLoaderTrain))
-    for epoca in range(epocas):
-        perdaTotal = 0.0
-        perdaTotalVal = 0.0
-        accuracyTotal = 0.0
-        Cnn.train(True)
-        for iteracao, (image, label) in enumerate(dataLoaderTrain):
-            otimizador.zero_grad()
-            image = image.cuda()
-            label = label.cuda()
-            inferencia = Cnn(image)
-            perda = criterio(inferencia, label)
-            perda.backward()
-            otimizador.step()
-            perdaTotal += perda
-            
-            if iteracao % 100 == 0:
-                print(f"epoca {epoca}, iteração: {iteracao}, perda {perda.item()}")
+        Cnn = Cnn.cuda()
+        criterio = CrossEntropyLoss().cuda()
+        otimizador = SGD(Cnn.parameters(),learning_rate)
+        print(len(dataLoaderTrain))
+        for epoca in range(epocas):
 
-        perdaTotal /= len(dataLoaderTrain)
-        
-        # print(f"a perda por epoca no treino é: {perdaTotal}")
+            totalLoss = 0.0
+            totalLossVal = 0.0
+            accuracyTotal = 0.0
 
-        Cnn.eval()
-        with torch.no_grad():
-            for iteracao, (image, label) in enumerate(dataLoaderVal):
+            Cnn.train(True)
 
+            for iteration, (image, label) in enumerate(dataLoaderTrain):
+                otimizador.zero_grad()
                 image = image.cuda()
                 label = label.cuda()
-                # b = image.size(0)
                 inferencia = Cnn(image)
-                perda = criterio(inferencia, label)
-                perdaTotalVal += perda
-                maior = torch.argmax(inferencia, dim=1)
-                tensorComparacao = maior == label
-                accuracy = torch.sum(tensorComparacao)
-                accuracyTotal += accuracy
-                if iteracao % 100 == 0:
-                    print(perda.item())
-        accuracyTotal = accuracyTotal/ len(dataLoaderVal)
-        perdaTotalVal = perdaTotalVal / len(dataLoaderVal)
-        if minLoss > perdaTotalVal:
-            minLoss = perdaTotalVal
-            torch.save(Cnn.state_dict(), 'Model.pth')
-            print(f"Melhor modelo encontrado!!!")
-        print(f"acurácia validação: {accuracyTotal.item()}, Perda Total na validação {perdaTotalVal.item()}")
-    print(f"Fim da epoca {epoca}")
+                loss = criterio(inferencia, label)
+                loss.backward()
+                otimizador.step()
+                totalLoss += loss
+                
+                if iteration % 100 == 0:
+                    print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item()}")
 
+            totalLoss /= len(dataLoaderTrain)
+            
+            # print(f"a perda por epoca no treino é: {totalLoss}")
 
+            Cnn.eval()
+            with torch.no_grad():
+                for iteration, (image, label) in enumerate(dataLoaderVal):
 
+                    image = image.cuda()
+                    label = label.cuda()
+                    # b = image.size(0)
+                    inferencia = Cnn(image)
+                    loss = criterio(inferencia, label)
+                    totalLossVal += loss
+                    predictions = torch.argmax(inferencia, dim=1)
+                    tensorComparacao = predictions == label
+                    accuracy = torch.sum(tensorComparacao)
+                    accuracyTotal += accuracy
+                    if iteration % 100 == 0:
+                        print(loss.item())
+            accuracyTotal = accuracyTotal/ len(dataLoaderVal)
+            totalLossVal = totalLossVal / len(dataLoaderVal)
 
+            if minLoss > totalLossVal:
+                minLoss = totalLossVal
+                torch.save(Cnn.state_dict(), 'best_model/Model.pth')
+                print(f"Melhor modelo encontrado!!!")
+            print(f"acurácia validação: {accuracyTotal.item()}, Perda Total na validação {totalLossVal.item()}")
+        print(f"Fim da epoca {epoca}")
+    
+    else:
+         LoadModel = CnnModel()
+         LoadModel.load_state_dict(torch.load('best_model/Model.pth'))
 
+         for epoca in range(epocas):
 
-        
+            totalLoss = 0.0
+            totalLossVal = 0.0
+            accuracyTotal = 0.0
+
+            Cnn.train(True)
+
+            for iteration, (image, label) in enumerate(dataLoaderTrain):
+                otimizador.zero_grad()
+                image = image.cuda()
+                label = label.cuda()
+                inferencia = Cnn(image)
+                loss = criterio(inferencia, label)
+                loss.backward()
+                otimizador.step()
+                totalLoss += loss
+                
+                if iteration % 100 == 0:
+                    print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item()}")
+
+            totalLoss /= len(dataLoaderTrain)
+
+            Cnn.eval()
+            with torch.no_grad():
+                for iteration, (image, label) in enumerate(dataLoaderVal):
+
+                    image = image.cuda()
+                    label = label.cuda()
+                    # b = image.size(0)
+                    inferencia = Cnn(image)
+                    loss = criterio(inferencia, label)
+                    totalLossVal += loss
+                    predictions = torch.argmax(inferencia, dim=1)
+                    tensorComparacao = predictions == label
+                    accuracy = torch.sum(tensorComparacao)
+                    accuracyTotal += accuracy
+                    if iteration % 100 == 0:
+                        print(loss.item())
+            accuracyTotal = accuracyTotal/ len(dataLoaderVal)
+            totalLossVal = totalLossVal / len(dataLoaderVal)
+
+            if minLoss > totalLossVal:
+                minLoss = totalLossVal
+                torch.save(Cnn.state_dict(), 'best_model/Model.pth')
+                print(f"Melhor modelo encontrado!!!")
+            print(f"acurácia validação: {accuracyTotal.item()}, Perda Total na validação {totalLossVal.item()}")
+            print(f"Fim da epoca {epoca}")
             
             
 if __name__ == "__main__":
