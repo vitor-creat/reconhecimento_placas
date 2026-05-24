@@ -66,7 +66,7 @@ def main():
 
     Cnn = CnnModel()
     image, label = next(iter(dataLoaderTrain))
-    resultado = Cnn(image)
+        resultado = Cnn(image)
 
     print(args)
     print(Cnn)
