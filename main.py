@@ -61,8 +61,8 @@ def main():
         datasetTrain = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',files_train, transforms)
         datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',files_val, transforms)
 
-    dataLoaderTrain = DataLoader(datasetTrain, 16, True)
-    dataLoaderVal = DataLoader(datasetVal, 1, False)
+        dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
+        dataLoaderVal = DataLoader(datasetVal, 1, False)
 
     Cnn = CnnModel()
     image, label = next(iter(dataLoaderTrain))
