@@ -52,7 +52,7 @@ def loadBatch(modelo):
         X_val = listImage
         """/home/vitor/Documents/data/dogs-vs-cats/"""
         """/media/vitor/data/dogs-vs-cats/"""
-        datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',X_val, transforms)
+        datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',files_val, transforms)
 
         dataLoaderVal = DataLoader(datasetVal, 1, False)
         criterio = CrossEntropyLoss().cuda()
