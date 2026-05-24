@@ -39,7 +39,7 @@ def loadBatch(modelo):
         modelo.to(device)
         """/home/vitor/Documents/data/dogs-vs-cats/train"""
         """/media/vitor/data/dogs-vs-cats/train"""
-        for i in os.listdir("/media/vitor/data/dogs-vs-cats/train"):
+        for i in os.listdir("/home/vitor/Documents/data/dogs-vs-cats/train"):
             listImage.append(i)
         transforms = v2.Compose([
         v2.ToImage(),
@@ -50,7 +50,7 @@ def loadBatch(modelo):
         X_val = listImage
         """/home/vitor/Documents/data/dogs-vs-cats/"""
         """/media/vitor/data/dogs-vs-cats/"""
-        datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',X_val, transforms)
+        datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',X_val, transforms)
 
         dataLoaderVal = DataLoader(datasetVal, 1, False)
         criterio = CrossEntropyLoss().cuda()
@@ -66,7 +66,6 @@ def loadBatch(modelo):
                 loss = criterio(inferencia, label)
                 totalLoss += loss
                 maior = torch.argmax(inferencia, dim=1)
-                inferido = CLS2LABEL[maior]
                 tensorCompare = maior == label
                 accuracy = torch.sum(tensorCompare)
                 accuracyFinal += accuracy
