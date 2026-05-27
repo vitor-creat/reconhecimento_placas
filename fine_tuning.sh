@@ -1,7 +1,7 @@
 #!/bin/bash
 
 python main.py      \
-    --epocas 10     \
+    --epocas 8     \
     --lr 0.0000001  \
     --batch 16      \
     --fine_tuning True

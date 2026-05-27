@@ -10,20 +10,22 @@ class CnnModel(nn.Module):
             ConvolucionBlock(32,64),
             nn.MaxPool2d((2,2)),
             ConvolucionBlock(64,128),
-            nn.MaxPool2d((2,2)),
             ConvolucionBlock(128,256),
+            nn.MaxPool2d((2,2)),
+            ConvolucionBlock(256,512),
+            ConvolucionBlock(512,1024),
             nn.MaxPool2d((2,2))
             )
         self.cls = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(256*14*14,2)
+            nn.Linear(1024*14*14,2)
         )
 
 
 
 
     def forward(self, x):
-        #print(x.shape)
+        # print(x.shape)
         x = self.backbone(x)
         # print(x.shape)
         # input()
