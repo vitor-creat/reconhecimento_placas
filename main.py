@@ -12,6 +12,11 @@ import argparse
 import random
 
 def main():
+    datasetPath = "/media/vitor/data/dogs-vs-cats/" 
+    if os.path.exists("/media/vitor/data/dogs-vs-cats/"):
+        datasetPath = "/media/vitor/data/dogs-vs-cats/"
+    else:
+        datasetPath = 
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--epocas", default=16, required=False, type=int)
@@ -27,7 +32,7 @@ def main():
     fine_tuning = args.fine_tuning
     minLoss = 5.0
     
-    file_list = os.listdir("/home/vitor/Documents/dogs-cats/dogs-vs-cats/train")
+    file_list = os.listdir("/media/vitor/data/dogs-vs-cats/train")
     random.shuffle(file_list)
     
     files_train = file_list[:int(len(file_list)*0.8)]
@@ -53,31 +58,22 @@ def main():
         v2.ToDtype(torch.float32, scale=True),
         v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
-    #     X_train, X_val = train_test_split(
-    #     listImage, test_size=0.20, shuffle=False
-    # )
+
         """/home/vitor/Documents/data/dogs-vs-cats/"""
         """/media/vitor/data/dogs-vs-cats/"""
-        datasetTrain = DatasetCatAndDog('/home/vitor/Documents/dogs-cats/dogs-vs-cats/',files_train, transforms)
-        datasetVal = DatasetCatAndDog('/home/vitor/Documents/dogs-cats/dogs-vs-cats/',files_val, transforms)
+        datasetTrain = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_train, transforms)
+        datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_val, transforms)
 
         dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
         dataLoaderVal = DataLoader(datasetVal, 1, False)
 
         Cnn = CnnModel()
         image, label = next(iter(dataLoaderTrain))
-        resultado = Cnn(image)
 
-        # print(args)
-        # print(Cnn)
-        # print(resultado.shape, maior.shape)
-        # print(resultado[0], maior[0])
-        # print(maior)
-        # print(label)
         Cnn = Cnn.cuda()
         criterio = CrossEntropyLoss().cuda()
         otimizador = SGD(Cnn.parameters(),learning_rate)
-        print(len(dataLoaderTrain))
+
         for epoca in range(epocas):
 
             totalLoss = 0.0
@@ -97,7 +93,7 @@ def main():
                 totalLoss += loss
                 
                 if iteration % 100 == 0:
-                    print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item()}")
+                    print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item():.4f}")
 
             totalLoss /= len(dataLoaderTrain)
             
@@ -126,8 +122,8 @@ def main():
                 minLoss = totalLossVal
                 torch.save(Cnn.state_dict(), 'best_model/Model.pth')
                 print(f"Melhor modelo encontrado!!!")
-            print(f"acurácia validação: {accuracyTotal.item()}, Perda Total na validação {totalLossVal.item()}")
-        print(f"Fim da epoca {epoca}")
+            print(f"acurácia validação: {accuracyTotal.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
+        #print(f"Fim da epoca {epoca}")
     
     else:
          LoadModel = CnnModel()
@@ -144,8 +140,8 @@ def main():
             v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
          
-         datasetTrain = DatasetCatAndDog('/home/vitor/Documents/dogs-cats/dogs-vs-cats/',files_train, transforms)
-         datasetVal = DatasetCatAndDog('/home/vitor/Documents/dogs-cats/dogs-vs-cats/',files_val, transforms)
+         datasetTrain = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_train, transforms)
+         datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_val, transforms)
 
          dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
          dataLoaderVal = DataLoader(datasetVal, 1, False)
@@ -169,7 +165,7 @@ def main():
                 totalLoss += loss
                 
                 if iteration % 100 == 0:
-                    print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item()}")
+                    print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item():.4f}")
 
             totalLoss /= len(dataLoaderTrain)
 
@@ -179,7 +175,6 @@ def main():
 
                     image = image.cuda()
                     label = label.cuda()
-                    # b = image.size(0)
                     inferencia = LoadModel(image)
                     loss = criterio(inferencia, label)
                     totalLossVal += loss
@@ -187,8 +182,8 @@ def main():
                     tensorComparacao = predictions == label
                     accuracy = torch.sum(tensorComparacao)
                     accuracyTotal += accuracy
-                    if iteration % 100 == 0:
-                        print(loss.item())
+                    # if iteration % 100 == 0:
+                    #     print(loss.item())
             accuracyTotal = accuracyTotal/ len(dataLoaderVal)
             totalLossVal = totalLossVal / len(dataLoaderVal)
 
@@ -196,8 +191,8 @@ def main():
                 minLoss = totalLossVal
                 torch.save(LoadModel.state_dict(), 'best_model/Model.pth')
                 print(f"Melhor modelo encontrado!!!")
-            print(f"acurácia validação: {accuracyTotal.item()}, Perda Total na validação {totalLossVal.item()}")
-            print(f"Fim da epoca {epoca}")
+            print(f"acurácia validação: {accuracyTotal.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
+            #print(f"Fim da epoca {epoca}")
             
             
 if __name__ == "__main__":

@@ -25,7 +25,7 @@ class Dataset:
     def __getitem__(self, key):
         img_path = os.path.join(self.root, self.imgs[key])
         image = Image.open(img_path)
-        print(np.array(image).shape, img_path)
+        # print(np.array(image).shape, img_path)
         image = self.transform(image)
         image_array = np.array(image)
         label = self.cls[key]
@@ -48,7 +48,7 @@ def dataLoader(i, n, dataset):
         img_array_list.append(image_array)
     
     img_stack = np.stack(img_array_list)
-    print(img_stack.shape)
+    # print(img_stack.shape)
     return  img_stack
 
 def main ():

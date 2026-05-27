@@ -52,7 +52,7 @@ def loadBatch(modelo):
         X_val = listImage
         """/home/vitor/Documents/data/dogs-vs-cats/"""
         """/media/vitor/data/dogs-vs-cats/"""
-        datasetVal = DatasetCatAndDog('/home/vitor/Documents/data/dogs-vs-cats/',files_val, transforms)
+        datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_val, transforms)
 
         dataLoaderVal = DataLoader(datasetVal, 1, False)
         criterio = CrossEntropyLoss().cuda()
@@ -61,7 +61,7 @@ def loadBatch(modelo):
         totalLoss = 0.0
         with torch.no_grad():
             for iteracao, (image, label) in enumerate(dataLoaderVal):
-                print(type(image))
+                #print(type(image))
                 image = image.cuda()
                 label = label.cuda()
                 inferencia = modelo(image)
