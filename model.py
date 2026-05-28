@@ -39,11 +39,8 @@ class ConvolucionBlock(nn.Module):
         super().__init__()
         self.block = nn.Sequential(
             nn.Conv2d(inchannels,outchannels, (3,3), padding="same"),
-            nn.BatchNorm2d(outchannels),
             nn.ReLU(inplace=True),
-            nn.Conv2d(inchannels,outchannels, (3,3), padding="same"),
             nn.BatchNorm2d(outchannels),
-            nn.ReLU(inplace=True)
         )
     def forward(self, x):
         

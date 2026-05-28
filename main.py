@@ -12,11 +12,12 @@ import argparse
 import random
 
 def main():
+    #Isso vai me poupar um tempo do caralho
     datasetPath = "/media/vitor/data/dogs-vs-cats/" 
     if os.path.exists("/media/vitor/data/dogs-vs-cats/"):
         datasetPath = "/media/vitor/data/dogs-vs-cats/"
     else:
-        datasetPath = 
+        datasetPath = "/home/vitor/Documents/dogs-cats/dogs-vs-cats/"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--epocas", default=16, required=False, type=int)
@@ -32,7 +33,7 @@ def main():
     fine_tuning = args.fine_tuning
     minLoss = 5.0
     
-    file_list = os.listdir("/media/vitor/data/dogs-vs-cats/train")
+    file_list = os.listdir(datasetPath + "train")
     random.shuffle(file_list)
     
     files_train = file_list[:int(len(file_list)*0.8)]
@@ -45,12 +46,6 @@ def main():
 
     if fine_tuning == False:
 
-        # listImage = []
-        """/home/vitor/Documents/data/dogs-vs-cats/train"""
-        """/media/vitor/data/dogs-vs-cats/train"""
-        # for i in os.listdir(""):
-        #     listImage.append(i)
-
         transforms = v2.Compose([
         v2.ToImage(),
         v2.RandomResizedCrop(size=(224, 224), antialias=True),
@@ -59,10 +54,8 @@ def main():
         v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
 
-        """/home/vitor/Documents/data/dogs-vs-cats/"""
-        """/media/vitor/data/dogs-vs-cats/"""
-        datasetTrain = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_train, transforms)
-        datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_val, transforms)
+        datasetTrain = DatasetCatAndDog(datasetPath,files_train, transforms)
+        datasetVal = DatasetCatAndDog(datasetPath,files_val, transforms)
 
         dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
         dataLoaderVal = DataLoader(datasetVal, 1, False)
@@ -140,8 +133,8 @@ def main():
             v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
          
-         datasetTrain = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_train, transforms)
-         datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_val, transforms)
+         datasetTrain = DatasetCatAndDog(datasetPath,files_train, transforms)
+         datasetVal = DatasetCatAndDog(datasetPath,files_val, transforms)
 
          dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
          dataLoaderVal = DataLoader(datasetVal, 1, False)
