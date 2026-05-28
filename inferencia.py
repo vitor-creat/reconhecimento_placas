@@ -14,6 +14,14 @@ import matplotlib.pyplot as plt
 
 CLS2LABEL = ['Gato', 'Cachorro']
 
+datasetPath = "/media/vitor/data/dogs-vs-cats/" 
+
+if os.path.exists("/media/vitor/data/dogs-vs-cats/"):
+    datasetPath = "/media/vitor/data/dogs-vs-cats/"
+else:
+    datasetPath = "/home/vitor/Documents/dogs-cats/dogs-vs-cats"
+
+
 def load1Image(modelo,args):
         image = Image.open(args.imagePath)
         copyImage = image.copy()
@@ -52,7 +60,7 @@ def loadBatch(modelo):
         X_val = listImage
         """/home/vitor/Documents/data/dogs-vs-cats/"""
         """/media/vitor/data/dogs-vs-cats/"""
-        datasetVal = DatasetCatAndDog('/media/vitor/data/dogs-vs-cats/',files_val, transforms)
+        datasetVal = DatasetCatAndDog(datasetPath,files_val, transforms)
 
         dataLoaderVal = DataLoader(datasetVal, 1, False)
         criterio = CrossEntropyLoss().cuda()
