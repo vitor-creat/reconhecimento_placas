@@ -13,12 +13,12 @@ import random
 import matplotlib.pyplot as plt
 
 def main():
-    #Isso vai me poupar um tempo do caralho
-    datasetPath = "/media/vitor/data/dogs-vs-cats/" 
-    if os.path.exists("/media/vitor/data/dogs-vs-cats/"):
-        datasetPath = "/media/vitor/data/dogs-vs-cats/"
+
+    datasetPath = "/media/vitor/data/dogs-vs-cats" 
+    if os.path.exists("/media/vitor/data/dogs-vs-cats"):
+        datasetPath = "/media/vitor/data/dogs-vs-cats"
     else:
-        datasetPath = "/home/vitor/Documents/dogs-cats/dogs-vs-cats/"
+        datasetPath = "/media/vitor/data/dogs-vs-cats"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--epocas", default=16, required=False, type=int)
@@ -34,7 +34,7 @@ def main():
     fine_tuning = args.fine_tuning
     minLoss = 5.0
     
-    file_list = os.listdir(datasetPath + "train")
+    file_list = os.listdir(datasetPath + "/train")
     random.shuffle(file_list)
     
     files_train = file_list[:int(len(file_list)*0.8)]
@@ -53,7 +53,7 @@ def main():
         v2.RandomHorizontalFlip(p=0.5),
         v2.ToDtype(torch.float32, scale=True),
         v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-    ])
+        ])
 
         datasetTrain = DatasetCatAndDog(datasetPath,files_train, transforms)
         datasetVal = DatasetCatAndDog(datasetPath,files_val, transforms)
@@ -68,11 +68,17 @@ def main():
         criterio = CrossEntropyLoss().cuda()
         otimizador = SGD(Cnn.parameters(),learning_rate)
 
+        listLossTrain = []
+        listLossVal = []
+        listAccTrain = []
+        listAccVal = []
+
         for epoca in range(epocas):
 
-            totalLoss = 0.0
+            totalLossTrain = 0.0
+            accuracyTotalTrain = 0.0
             totalLossVal = 0.0
-            accuracyTotal = 0.0
+            accuracyTotalVal = 0.0
 
             Cnn.train(True)
 
@@ -84,16 +90,23 @@ def main():
                 loss = criterio(inferencia, label)
                 loss.backward()
                 otimizador.step()
-                totalLoss += loss
+                totalLossTrain += loss
+                predictions = torch.argmax(inferencia, dim=1)
+                tensorComparacao = predictions == label
+                accuracy = torch.sum(tensorComparacao) / batch_size
+                accuracyTotalTrain += accuracy
                 
                 if iteration % 100 == 0:
-                    print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item():.4f}")
+                    print(f"epoca {epoca}, iteração: {iteration}, perda: {loss.item():.4f}, acuracia: {accuracy}")
 
-            totalLoss /= len(dataLoaderTrain)
+            
+            print(accuracyTotalTrain)
+            totalLossTrain /= len(dataLoaderTrain)
+            print(accuracyTotalTrain, len(dataLoaderTrain))
+            accuracyTotalTrain /= len(dataLoaderTrain)
 
-            fig, ax = plt.subplots()
-            ax.plot(totalLoss.item(), epocas)
-            plt.show()
+            listLossTrain.append(totalLossTrain.item())
+            listAccTrain.append(accuracyTotalTrain.item())
             # print(f"a perda por epoca no treino é: {totalLoss}")
 
             Cnn.eval()
@@ -109,15 +122,15 @@ def main():
                     predictions = torch.argmax(inferencia, dim=1)
                     tensorComparacao = predictions == label
                     accuracy = torch.sum(tensorComparacao)
-                    accuracyTotal += accuracy
+                    accuracyTotalVal += accuracy
                     # if iteration % 100 == 0:
                     #     print(loss.item())
-                    fig, ax = plt.subplot()
-                    ax.plot(epocas,loss.item())
-                    plt.show()
 
-            accuracyTotal = accuracyTotal/ len(dataLoaderVal)
+            accuracyTotalVal = accuracyTotalVal/ len(dataLoaderVal)
             totalLossVal = totalLossVal / len(dataLoaderVal)
+
+            listAccVal.append(accuracyTotalVal.item())
+            listLossVal.append(totalLossVal.item())
 
             if minLoss > totalLossVal:
                 minLoss = totalLossVal
@@ -126,6 +139,29 @@ def main():
             print(f"acurácia validação: {accuracyTotal.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
         #print(f"Fim da epoca {epoca}")
     
+        x = range(epocas)
+        x = list(x)
+        y = list(listLossTrain)
+        plt.plot(x, y)
+        plt.title("Loss de treino pós ajuste fino")
+        plt.savefig('loss_de_treino_fineTunning.png', dpi=300)
+        plt.show()
+
+        y_acc = list(accuracyTotal.item())
+        plt.plot(x,y_acc)
+        plt.title("Acurácia de treino")
+        plt.savefig('Acurácia_de_treino_fineTunning.png', dpi=300)
+
+        y_LossTrain = list(listLossVal)
+        plt.plot(x,y_LossTrain)
+        plt.title("loss na validação")
+        plt.savefig('loss_na_validação_fineTunning.png', dpi=300)
+
+        y_accVal = list(listAccVal)
+        plt.plot(x,y_accVal)
+        plt.title("Acurácia na validação")
+        plt.savefig('Acurácia_na_validação_fineTunning.png', dpi=300)
+
     else:
          LoadModel = CnnModel()
          LoadModel.load_state_dict(torch.load('best_model/Model.pth'))
@@ -139,7 +175,7 @@ def main():
             v2.RandomHorizontalFlip(p=0.5),
             v2.ToDtype(torch.float32, scale=True),
             v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-        ])
+            ])
          
          datasetTrain = DatasetCatAndDog(datasetPath,files_train, transforms)
          datasetVal = DatasetCatAndDog(datasetPath,files_val, transforms)
@@ -149,9 +185,10 @@ def main():
 
          for epoca in range(epocas):
 
-            totalLoss = 0.0
+            totalLossTrain = 0.0
+            accuracyTotalTrain = 0.0
             totalLossVal = 0.0
-            accuracyTotal = 0.0
+            accuracyTotalVal = 0.0
 
             LoadModel.train(True)
 
@@ -168,8 +205,12 @@ def main():
                 if iteration % 100 == 0:
                     print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item():.4f}")
 
-            totalLoss /= len(dataLoaderTrain)
+            totalLossTrain /= len(dataLoaderTrain)
+            accuracyTotalTrain /= len(dataLoaderTrain)
 
+            listLossTrain.append(totalLossTrain.item())
+            listAccTrain.append(accuracyTotalTrain.item())
+            # print(f"a perda por epoca no treino é: {totalLoss}")
 
 
             LoadModel.eval()
@@ -187,8 +228,11 @@ def main():
                     accuracyTotal += accuracy
                     # if iteration % 100 == 0:
                     #     print(loss.item())
-            accuracyTotal = accuracyTotal/ len(dataLoaderVal)
+            accuracyTotalVal = accuracyTotalVal/ len(dataLoaderVal)
             totalLossVal = totalLossVal / len(dataLoaderVal)
+
+            listAccVal.append(accuracyTotal.item())
+            listLossVal.append(totalLossVal.item())
 
             if minLoss > totalLossVal:
                 minLoss = totalLossVal
@@ -196,6 +240,28 @@ def main():
                 print(f"Melhor modelo encontrado!!!")
             print(f"acurácia validação: {accuracyTotal.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
             #print(f"Fim da epoca {epoca}")
+            x = range(epocas)
+            x = list(x)
+            y = list(listLossTrain)
+            plt.plot(x, y)
+            plt.title("Loss de treino pós ajuste fino")
+            plt.savefig('loss_de_treino_fineTunning.png', dpi=300)
+            plt.show()
+
+            y_acc = list(accuracyTotal.item())
+            plt.plot(x,y_acc)
+            plt.title("Acurácia de treino")
+            plt.savefig('Acurácia_de_treino_fineTunning.png', dpi=300)
+
+            y_LossTrain = list(listLossVal)
+            plt.plot(x,y_LossTrain)
+            plt.title("loss na validação")
+            plt.savefig('loss_na_validação_fineTunning.png', dpi=300)
+
+            y_accVal = list(listAccVal)
+            plt.plot(x,y_accVal)
+            plt.title("Acurácia na validação")
+            plt.savefig('Acurácia_na_validação_fineTunning.png', dpi=300)
             
             
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
 #!/bin/bash
 
 python main.py \
-    --epocas 16 \
+    --epocas 2 \
     --lr 0.002 \
     --batch 16
