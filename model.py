@@ -7,18 +7,17 @@ class CnnModel(nn.Module):
         super().__init__(*args, **kwargs)
         self.backbone = nn.Sequential(
             ConvolucionBlock(3,32),
-            nn.MaxPool2d((2,2)),
             ConvolucionBlock(32,64),
             nn.MaxPool2d((2,2)),
             ConvolucionBlock(64,128),
             ConvolucionBlock(128,256),
             nn.MaxPool2d((2,2)),
             ConvolucionBlock(256,512),
-            nn.MaxPool2d((2,2))
+            ConvolucionBlock(512,1024)
             )
         self.cls = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(512*14*14,2)
+            nn.Linear(1024*56*56,2)
         )
 
 
@@ -36,11 +35,16 @@ class CnnModel(nn.Module):
 # 3 32
 class ConvolucionBlock(nn.Module):
     def __init__(self, inchannels, outchannels):
-        super().__init__()
+        super(ConvolucionBlock, self).__init__()
         self.block = nn.Sequential(
-            nn.Conv2d(inchannels,outchannels, (3,3), padding="same"),
-            nn.ReLU(inplace=True),
+            nn.Conv2d(inchannels,outchannels, (3,3), stride = 1,padding="same"),
             nn.BatchNorm2d(outchannels),
+            nn.ReLU(inplace=True),
+
+            # nn.Conv2d(outchannels, outchannels, (3,3), stride = 1,padding="same"),
+            # nn.BatchNorm2d(outchannels),
+            # nn.ReLU(inplace=True),
+
         )
     def forward(self, x):
         
