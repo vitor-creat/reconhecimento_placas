@@ -10,6 +10,7 @@ from torch.nn import CrossEntropyLoss
 import numpy as np
 import argparse
 import random
+import matplotlib.pyplot as plt
 
 def main():
     #Isso vai me poupar um tempo do caralho
@@ -89,7 +90,10 @@ def main():
                     print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item():.4f}")
 
             totalLoss /= len(dataLoaderTrain)
-            
+
+            fig, ax = plt.subplots()
+            ax.plot(totalLoss.item(), epocas)
+            plt.show()
             # print(f"a perda por epoca no treino é: {totalLoss}")
 
             Cnn.eval()
@@ -106,8 +110,12 @@ def main():
                     tensorComparacao = predictions == label
                     accuracy = torch.sum(tensorComparacao)
                     accuracyTotal += accuracy
-                    if iteration % 100 == 0:
-                        print(loss.item())
+                    # if iteration % 100 == 0:
+                    #     print(loss.item())
+                    fig, ax = plt.subplot()
+                    ax.plot(epocas,loss.item())
+                    plt.show()
+
             accuracyTotal = accuracyTotal/ len(dataLoaderVal)
             totalLossVal = totalLossVal / len(dataLoaderVal)
 
@@ -161,6 +169,8 @@ def main():
                     print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item():.4f}")
 
             totalLoss /= len(dataLoaderTrain)
+
+
 
             LoadModel.eval()
             with torch.no_grad():
