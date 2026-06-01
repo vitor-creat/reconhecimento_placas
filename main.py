@@ -11,6 +11,7 @@ import numpy as np
 import argparse
 import random
 import matplotlib.pyplot as plt
+from tqdm import tqdm
 
 def main():
 
@@ -74,15 +75,17 @@ def main():
         listAccVal = []
 
         for epoca in range(epocas):
-
+            
             totalLossTrain = 0.0
             accuracyTotalTrain = 0.0
             totalLossVal = 0.0
             accuracyTotalVal = 0.0
 
             Cnn.train(True)
-
-            for iteration, (image, label) in enumerate(dataLoaderTrain):
+            iteration = 0
+            pbar = tqdm(dataLoaderTrain, desc=f"epoca {epoca}")
+            for (image, label) in pbar:
+                
                 otimizador.zero_grad()
                 image = image.cuda()
                 label = label.cuda()
@@ -95,10 +98,10 @@ def main():
                 tensorComparacao = predictions == label
                 accuracy = torch.sum(tensorComparacao) / batch_size
                 accuracyTotalTrain += accuracy
-                
-                if iteration % 100 == 0:
-                    print(f"epoca {epoca}, iteração: {iteration}, perda: {loss.item():.4f}, acuracia: {accuracy}")
-
+                iteration += 1
+                # if iteration % 100 == 0:
+                #     print(f"epoca {epoca}, iteração: {iteration}, perda: {loss.item():.4f}, acuracia: {accuracy}")
+                pbar.set_postfix(loss = f"{loss.item():.4}", acc = accuracy.item())
             
             print(accuracyTotalTrain)
             totalLossTrain /= len(dataLoaderTrain)
@@ -136,14 +139,14 @@ def main():
                 minLoss = totalLossVal
                 torch.save(Cnn.state_dict(), 'best_model/Model.pth')
                 print(f"Melhor modelo encontrado!!!")
-            print(f"acurácia validação: {accuracyTotal.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
+            print(f"acurácia validação: {accuracyTotalTrain.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
         #print(f"Fim da epoca {epoca}")
     
         x = range(epocas)
         x = list(x)
         y = list(listLossTrain)
         plt.plot(x, y)
-        plt.title("Loss de treino pós ajuste fino")
+        plt.title("Loss de treino")
         plt.savefig('loss_de_treino_fineTunning.png', dpi=300)
         plt.show()
 
@@ -151,12 +154,12 @@ def main():
         plt.plot(x,y_acc)
         plt.title("Acurácia de treino")
         plt.savefig('Acurácia_de_treino_fineTunning.png', dpi=300)
-
+        plt.show()
         y_LossTrain = list(listLossVal)
         plt.plot(x,y_LossTrain)
         plt.title("loss na validação")
         plt.savefig('loss_na_validação_fineTunning.png', dpi=300)
-
+        plt.show()
         y_accVal = list(listAccVal)
         plt.plot(x,y_accVal)
         plt.title("Acurácia na validação")
@@ -238,7 +241,7 @@ def main():
                 minLoss = totalLossVal
                 torch.save(LoadModel.state_dict(), 'best_model/Model.pth')
                 print(f"Melhor modelo encontrado!!!")
-            print(f"acurácia validação: {accuracyTotal.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
+            print(f"acurácia validação: {accuracyTotalTrain.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
             #print(f"Fim da epoca {epoca}")
             x = range(epocas)
             x = list(x)
@@ -252,16 +255,19 @@ def main():
             plt.plot(x,y_acc)
             plt.title("Acurácia de treino")
             plt.savefig('Acurácia_de_treino_fineTunning.png', dpi=300)
-
+            plt.show()
             y_LossTrain = list(listLossVal)
             plt.plot(x,y_LossTrain)
             plt.title("loss na validação")
             plt.savefig('loss_na_validação_fineTunning.png', dpi=300)
-
+            plt.show()
             y_accVal = list(listAccVal)
             plt.plot(x,y_accVal)
             plt.title("Acurácia na validação")
             plt.savefig('Acurácia_na_validação_fineTunning.png', dpi=300)
+            plt.show()
+
+
             
             
 if __name__ == "__main__":
