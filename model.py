@@ -6,18 +6,19 @@ class CnnModel(nn.Module):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.backbone = nn.Sequential(
-            ConvolucionBlock(3,32),
-            ConvolucionBlock(32,64),
+            DoubbleConv(3,32),
+            DoubbleConv(32,64),
             nn.MaxPool2d((2,2)),
-            ConvolucionBlock(64,128),
-            ConvolucionBlock(128,256),
+            DoubbleConv(64,128),
+            DoubbleConv(128,256),
             nn.MaxPool2d((2,2)),
-            ConvolucionBlock(256,512),
-            ConvolucionBlock(512,1024)
+            DoubbleConv(256,512),
+            DoubbleConv(512,1024)
             )
         self.cls = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(1024*56*56,2)
+            #mudei de 2 para 32, pois antes tinhas apenas 2 classes (gato e cachorro), agora temos 35 (0-9 e a-z)
+            nn.Linear(1024*56*56,35)
         )
 
 
@@ -36,6 +37,7 @@ class CnnModel(nn.Module):
 class ConvolucionBlock(nn.Module):
     def __init__(self, inchannels, outchannels):
         super(ConvolucionBlock, self).__init__()
+        # print(type(inchannels), type(outchannels))
         self.block = nn.Sequential(
             nn.Conv2d(inchannels,outchannels, (3,3), stride = 1,padding="same"),
             nn.BatchNorm2d(outchannels),
@@ -44,6 +46,18 @@ class ConvolucionBlock(nn.Module):
             # nn.Conv2d(outchannels, outchannels, (3,3), stride = 1,padding="same"),
             # nn.BatchNorm2d(outchannels),
             # nn.ReLU(inplace=True),
+
+        )
+    def forward(self, x):
+        
+        return self.block(x)
+    
+class DoubbleConv(nn.Module):
+    def __init__(self, inchannels, outchannels):
+        super(DoubbleConv, self).__init__()
+        self.block = nn.Sequential(
+           ConvolucionBlock(inchannels, int(outchannels/2)),
+           ConvolucionBlock(int(outchannels/2), outchannels)
 
         )
     def forward(self, x):
