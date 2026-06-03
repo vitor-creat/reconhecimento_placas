@@ -35,6 +35,13 @@ def main():
     fine_tuning = args.fine_tuning
     minLoss = 5.0
     
+    PATH_GRAFICOS = "grafico"
+
+    if not os.path.exists(PATH_GRAFICOS):
+        os.makedirs(os.path.join(PATH_GRAFICOS, "treino"), exist_ok=True)
+        os.makedirs(os.path.join(PATH_GRAFICOS, "fine_tunning"), exist_ok=True)
+
+
     file_list = os.listdir(datasetPath + "/train")
     random.shuffle(file_list)
     
@@ -103,9 +110,9 @@ def main():
                 #     print(f"epoca {epoca}, iteração: {iteration}, perda: {loss.item():.4f}, acuracia: {accuracy}")
                 pbar.set_postfix(loss = f"{loss.item():.4}", acc = accuracy.item())
             
-            print(accuracyTotalTrain)
+            #print(accuracyTotalTrain)
             totalLossTrain /= len(dataLoaderTrain)
-            print(accuracyTotalTrain, len(dataLoaderTrain))
+            #print(accuracyTotalTrain, len(dataLoaderTrain))
             accuracyTotalTrain /= len(dataLoaderTrain)
 
             listLossTrain.append(totalLossTrain.item())
@@ -147,23 +154,24 @@ def main():
         y = list(listLossTrain)
         plt.plot(x, y)
         plt.title("Loss de treino")
-        plt.savefig('loss_de_treino_fineTunning.png', dpi=300)
+        plt.savefig(os.path.join(PATH_GRAFICOS, "treino",  "loss_de_treino.png"), dpi=300)
         plt.show()
 
-        y_acc = list(accuracyTotal.item())
+        y_acc = list(listAccTrain)
         plt.plot(x,y_acc)
         plt.title("Acurácia de treino")
-        plt.savefig('Acurácia_de_treino_fineTunning.png', dpi=300)
+        plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "acc_de_treino.png"), dpi=300)
         plt.show()
         y_LossTrain = list(listLossVal)
         plt.plot(x,y_LossTrain)
         plt.title("loss na validação")
-        plt.savefig('loss_na_validação_fineTunning.png', dpi=300)
+        plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "loss_de_val.png"), dpi=300)
         plt.show()
         y_accVal = list(listAccVal)
         plt.plot(x,y_accVal)
         plt.title("Acurácia na validação")
-        plt.savefig('Acurácia_na_validação_fineTunning.png', dpi=300)
+        plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "acc_de_val.png"), dpi=300)
+        plt.show()
 
     else:
          LoadModel = CnnModel()
@@ -248,23 +256,23 @@ def main():
             y = list(listLossTrain)
             plt.plot(x, y)
             plt.title("Loss de treino pós ajuste fino")
-            plt.savefig('loss_de_treino_fineTunning.png', dpi=300)
+            plt.savefig(os.path.join(PATH_GRAFICOS, "fine_tunning", "loss_de_treino_fineTunning.png"), dpi=300)
             plt.show()
 
-            y_acc = list(accuracyTotal.item())
+            y_acc = list(listAccTrain)
             plt.plot(x,y_acc)
             plt.title("Acurácia de treino")
-            plt.savefig('Acurácia_de_treino_fineTunning.png', dpi=300)
+            plt.savefig(os.path.join(PATH_GRAFICOS, "fine_tunning", "acc_de_treino_fineTunning"), dpi=300)
             plt.show()
             y_LossTrain = list(listLossVal)
             plt.plot(x,y_LossTrain)
             plt.title("loss na validação")
-            plt.savefig('loss_na_validação_fineTunning.png', dpi=300)
+            plt.savefig(os.path.join(PATH_GRAFICOS, "fine_tunning", "loss_de_val_fineTunning"), dpi=300)
             plt.show()
             y_accVal = list(listAccVal)
             plt.plot(x,y_accVal)
             plt.title("Acurácia na validação")
-            plt.savefig('Acurácia_na_validação_fineTunning.png', dpi=300)
+            plt.savefig(os.path.join(PATH_GRAFICOS, "fine_tunning", "acc_de_val_fineTunning"), dpi=300)
             plt.show()
 
 
