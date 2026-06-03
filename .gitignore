@@ -1,20 +1,5 @@
 
-# Bytecode Python
 __pycache__/
-*.py[cod]
+*.pth
+*.pt
 
-# Ambientes virtuais
-venv/
-.venv/
-
-# Arquivos de cache
-.pytest_cache/
-.mypy_cache/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Distribuição
-build/
-dist/
-*.egg-info/
