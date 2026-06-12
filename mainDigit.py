@@ -14,12 +14,13 @@ from tqdm import tqdm
 
 def main():
 
-    datasetPath = "/media/vitor/data/CNN_letters_custom"
+    # datasetPath = "/media/vitor/data/CNN_letters_custom"
+    datasetPath = "/media/vitor/data/CNN_letters_digit_merge"
 
-    if os.path.exists("/media/vitor/data/CNN_letters_custom"):
-        datasetPath = "/media/vitor/data/CNN_letters_custom"
-    else:
-        datasetPath = "/media/vitor/data/CNN_letters_custom"
+    # if os.path.exists("/media/vitor/data/CNN_letters_custom"):
+    #     datasetPath = "/media/vitor/data/CNN_letters_custom"
+    # else:
+    #     datasetPath = "/media/vitor/data/CNN_letters_custom"
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--epocas", default=16, required=False, type=int)
