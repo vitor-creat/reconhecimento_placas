@@ -14,8 +14,8 @@ from tqdm import tqdm
 
 def main():
 
-    # datasetPath = "/media/vitor/data/CNN_letters_custom"
-    datasetPath = "/media/vitor/data/CNN_letters_digit_merge"
+    datasetPath = "/media/vitor/data/CNN_letters_custom"
+    # datasetPath = "/media/vitor/data/CNN_letters_digit_merge"
 
     # if os.path.exists("/media/vitor/data/CNN_letters_custom"):
     #     datasetPath = "/media/vitor/data/CNN_letters_custom"
@@ -108,7 +108,7 @@ def main():
             totalLossTrain = 0.0
             accuracyTotalTrain = 0.0
             totalLossVal = 0.0
-            accuracyTotalVal = 0.0
+            accuracyTotalVal = []
 
             Cnn.train(True)
             iteration = 0
@@ -152,12 +152,12 @@ def main():
                     predictions = torch.argmax(inferencia, dim=1)
                     tensorComparacao = predictions == label
                     accuracy = torch.sum(tensorComparacao)
-                    accuracyTotalVal += accuracy
+                    accuracyTotalVal.append(accuracy.item()) 
 
-            accuracyTotalVal = accuracyTotalVal/ len(dataLoaderVal)
+            accuracyTotalVal = np.array(accuracyTotalVal).mean()
             totalLossVal = totalLossVal / len(dataLoaderVal)
 
-            listAccVal.append(accuracyTotalVal.item())
+            listAccVal.append(accuracyTotalVal)
             listLossVal.append(totalLossVal.item())
 
             if minLoss > totalLossVal:
@@ -176,12 +176,16 @@ def main():
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino",  "loss_de_treino.png"), dpi=300)
         plt.show()
 
+
+
         y_acc = list(listAccTrain)
         plt.plot(x,y_acc)
         plt.title("Acurácia de treino")
         
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "acc_de_treino.png"), dpi=300)
         plt.show()
+
+
 
         y_LossTrain = list(listLossVal)
         plt.plot(x,y_LossTrain)
@@ -190,11 +194,30 @@ def main():
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "loss_de_val.png"), dpi=300)
         plt.show()
 
+
         y_accVal = list(listAccVal)
         plt.plot(x,y_accVal)
         plt.title("Acurácia na validação")
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "acc_de_val.png"), dpi=300)
         plt.show()
+        print(listAccVal)
+
+
+        with open('loss_treino.txt', 'w') as file:
+            for l in listLossTrain:
+                file.writelines(l)
+
+        with open('acc_treino.txt', 'w') as file:
+            for l in listAccTrain:
+                file.writelines(l)
+
+        with open('loss_val.txt', 'w') as file:
+            for l in listLossVal:
+                file.writelines(l)
+
+        with open('acc_val.txt', 'w') as file:
+            for l in listAccVal:
+                file.writelines(l)
 
     else:
          LoadModel = DigitModel()
