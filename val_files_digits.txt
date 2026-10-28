@@ -1,0 +1,487 @@
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-02-27 16-34-35.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-07-29 16-45-49.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 15-51-13.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-13 15-08-19.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-03-06 13-20-30.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-02-24 15-27-23.png
+/media/elytus/Dados/CNN_letters_custom/F/Captura de tela de 2026-07-29 16-33-28.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 15-26-38.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-06 15-50-17.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-02-27 15-21-09.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-03-13 14-20-49.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-02-27 16-54-45.png
+/media/elytus/Dados/CNN_letters_custom/Q/Captura de tela de 2026-08-17 14-48-03.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-02 17-06-08.png
+/media/elytus/Dados/CNN_letters_custom/4/Imagem colada (133).png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-02-27 15-58-48.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-07-29 16-32-50.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-06 13-55-15.png
+/media/elytus/Dados/CNN_letters_custom/9/Imagem colada (210).png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-02-27 17-01-03.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-07-29 16-30-41.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-06 13-48-52.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-07-29 18-35-30.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-06 14-51-37.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-06 16-26-29.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-13 14-31-32.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-13 15-21-00.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-03-06 15-49-57.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-02-27 15-44-54.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-13 14-58-04.png
+/media/elytus/Dados/CNN_letters_custom/R/Imagem colada (29).png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-06 14-17-22.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-02-27 16-14-38.png
+/media/elytus/Dados/CNN_letters_custom/4/Imagem colada (98).png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-02-24 15-22-21.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-02-24 15-19-21.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-06 15-15-03.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-02-27 16-22-13.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-13 13-46-53.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-06 14-18-21.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-06 15-50-15.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-02-24 15-04-54.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-03-06 13-17-49.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-13 13-59-16.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-13 14-22-14.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-03-06 14-16-49.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-13 13-50-17.png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-02-27 16-33-41.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-06 13-36-06.png
+/media/elytus/Dados/CNN_letters_custom/F/Imagem colada (157).png
+/media/elytus/Dados/CNN_letters_custom/W/Captura de tela de 2026-03-02 16-52-45.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-13 14-36-01.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 16-08-27.png
+/media/elytus/Dados/CNN_letters_custom/9/Imagem colada (91).png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 15-37-15.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-02-27 16-57-50.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-06 15-41-46.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-13 14-56-42.png
+/media/elytus/Dados/CNN_letters_custom/2/Imagem colada (167).png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-02-24 15-02-57.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-13 15-26-05.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-06 15-14-44.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-13 14-23-14.png
+/media/elytus/Dados/CNN_letters_custom/F/Captura de tela de 2026-02-24 15-26-47.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 16-26-34.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-13 14-41-07.png
+/media/elytus/Dados/CNN_letters_custom/F/Captura de tela de 2026-03-06 14-11-29.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-13 14-58-17.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-06 13-37-11.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-13 14-25-51.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-07-29 18-48-31.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-06 14-05-59.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-02 17-07-13.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-13 13-49-01.png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-03-13 14-01-14.png
+/media/elytus/Dados/CNN_letters_custom/9/Imagem colada (61).png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-06 14-58-50.png
+/media/elytus/Dados/CNN_letters_custom/E/Imagem colada (66).png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-02-27 16-16-12.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-03-13 14-33-42.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-07-29 16-46-00.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-02 16-46-31.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 13-25-07.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-13 15-34-21.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-06 16-03-05.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-03-13 14-29-43.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-13 14-28-42.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-06 13-36-16.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 14-03-36.png
+/media/elytus/Dados/CNN_letters_custom/P/Imagem colada (62).png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-13 14-06-40.png
+/media/elytus/Dados/CNN_letters_custom/V/Captura de tela de 2026-07-29 17-10-39.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-06 15-15-54.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-13 15-13-53.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-02-24 15-19-43.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 13-23-09.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-02-27 16-07-16.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-02-27 15-26-20.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-02-27 16-27-24.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-02 16-39-47.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-13 13-54-46.png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-03-06 13-55-11.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-02-27 16-10-35.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-02 17-29-40.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-03-02 17-19-23.png
+/media/elytus/Dados/CNN_letters_custom/F/Imagem colada (101).png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-13 14-28-36.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-06 13-51-44.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-02 17-22-38.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-02-27 15-31-23.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-13 14-45-43.png
+/media/elytus/Dados/CNN_letters_custom/J/Imagem colada (209).png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-02 17-29-24.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-03-02 16-31-25.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 14-39-33.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-02-27 16-14-29.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-13 15-25-50.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 14-26-01.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-13 13-48-57.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-02-27 16-26-03.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-02-27 16-27-27.png
+/media/elytus/Dados/CNN_letters_custom/Z/Imagem colada (9).png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-02-27 16-51-26.png
+/media/elytus/Dados/CNN_letters_custom/3/Imagem colada (51).png
+/media/elytus/Dados/CNN_letters_custom/C/Imagem colada (206).png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 16-25-17.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-03-06 14-55-38.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-13 14-41-34.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-02 16-45-20.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-02-24 15-26-50.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-02-27 16-12-54.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-06 13-49-06.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-02-27 16-38-47.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-06 15-30-00.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-02-27 17-20-30.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-13 14-07-30.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-13 15-22-33.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-02-24 15-04-52.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-02-24 14-59-35.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-13 15-25-58.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-06 15-24-52.png
+/media/elytus/Dados/CNN_letters_custom/1/Imagem colada.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-02-27 16-43-29.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-06 13-48-38.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 16-01-03.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-06 15-39-24.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-02 17-04-43.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-03-06 14-18-16.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-13 14-19-53.png
+/media/elytus/Dados/CNN_letters_custom/Z/Captura de tela de 2026-03-06 15-24-48.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-07-29 18-37-38.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-02-27 16-16-28.png
+/media/elytus/Dados/CNN_letters_custom/F/Captura de tela de 2026-02-24 15-05-57.png
+/media/elytus/Dados/CNN_letters_custom/0/Imagem colada (2).png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-06 16-08-51.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-02-27 16-40-22.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-06 14-10-22.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-07-29 16-32-45.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 16-23-11.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-13 15-21-17.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-13 15-02-14.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-24 15-03-51.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 13-48-12.png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-02-27 16-57-42.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-02-24 15-07-44.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-07-29 17-27-26.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-02 17-09-32.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 14-40-47.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-13 14-33-59.png
+/media/elytus/Dados/CNN_letters_custom/9/Imagem colada (182).png
+/media/elytus/Dados/CNN_letters_custom/P/Imagem colada (23).png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-13 14-20-59.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-02-27 16-57-54.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-02 17-19-10.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-03-02 17-25-09.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-02 17-29-42.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-06 16-27-44.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-02-27 16-33-25.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-06 14-03-42.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-13 15-19-54.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-06 15-13-05.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-13 14-45-03.png
+/media/elytus/Dados/CNN_letters_custom/F/Captura de tela de 2026-03-06 15-47-46.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-02 17-23-42.png
+/media/elytus/Dados/CNN_letters_custom/7/Imagem colada (197).png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-13 15-18-57.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-06 15-44-23.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-02-27 16-35-07.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-02-27 16-54-53.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-02-27 16-14-33.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 15-03-48.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-06 14-54-41.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-02-27 15-46-49.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-06 13-16-15.png
+/media/elytus/Dados/CNN_letters_custom/3/Imagem colada (201).png
+/media/elytus/Dados/CNN_letters_custom/V/Captura de tela de 2026-07-29 18-42-25.png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-02-27 16-40-08.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-02-27 16-12-40.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-13 15-26-59.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-06 15-35-33.png
+/media/elytus/Dados/CNN_letters_custom/6/Imagem colada (117).png
+/media/elytus/Dados/CNN_letters_custom/L/Imagem colada (8).png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-06 15-16-04.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-13 15-37-43.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-06 14-59-45.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-02-27 15-37-23.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-02-27 16-51-33.png
+/media/elytus/Dados/CNN_letters_custom/P/Imagem colada (112).png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-13 15-35-33.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-13 14-27-24.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 15-24-59.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-02-27 16-03-24.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-02-24 15-15-13.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-13 14-31-46.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-02 17-26-27.png
+/media/elytus/Dados/CNN_letters_custom/V/Captura de tela de 2026-03-02 16-36-37.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-07-29 17-13-02.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-13 14-42-33.png
+/media/elytus/Dados/CNN_letters_custom/V/Captura de tela de 2026-03-13 14-32-26.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-24 15-08-25.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-02 17-25-25.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-27 17-06-41.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 16-02-57.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-07-29 16-34-02.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-06 15-04-44.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-02 17-18-22.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-02-27 15-32-56.png
+/media/elytus/Dados/CNN_letters_custom/E/Imagem colada.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-02 17-18-27.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-02-27 15-51-44.png
+/media/elytus/Dados/CNN_letters_custom/8/Imagem colada (14).png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-07-29 16-44-54.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-07-29 17-28-30.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-02-27 16-21-03.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-02-27 17-06-27.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-06 15-00-36.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-07-29 18-45-14.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-02-27 16-06-45.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-03-06 16-25-10.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-06 15-42-43.png
+/media/elytus/Dados/CNN_letters_custom/2/Imagem colada.png
+/media/elytus/Dados/CNN_letters_custom/3/Imagem colada (7).png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-13 14-51-57.png
+/media/elytus/Dados/CNN_letters_custom/Q/Captura de tela de 2026-03-02 17-02-34.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-13 14-30-47.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-07-29 17-07-10.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-13 15-02-05.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-02 16-33-29.png
+/media/elytus/Dados/CNN_letters_custom/Z/Captura de tela de 2026-03-13 14-22-55.png
+/media/elytus/Dados/CNN_letters_custom/C/Imagem colada (22).png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-02-27 15-43-22.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-02 16-38-41.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-13 15-36-22.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-06 15-24-03.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-07-29 17-06-56.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-02-24 15-26-22.png
+/media/elytus/Dados/CNN_letters_custom/V/Captura de tela de 2026-03-13 15-29-36.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 14-48-11.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-07-29 17-28-05.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-06 14-39-52.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-02-24 15-03-54.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-02-27 16-54-38.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-06 13-16-03.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-06 16-10-18.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-07-29 16-33-08.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-03-13 15-35-22.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 14-55-49.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-13 15-32-59.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-06 15-04-47.png
+/media/elytus/Dados/CNN_letters_custom/0/Imagem colada.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-06 14-11-37.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-06 15-35-29.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-07-29 16-26-14.png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-03-06 15-47-33.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-06 14-05-34.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-13 14-43-04.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-07-29 18-32-06.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-02-24 15-22-40.png
+/media/elytus/Dados/CNN_letters_custom/Q/Captura de tela de 2026-03-02 17-01-21.png
+/media/elytus/Dados/CNN_letters_custom/5/Imagem colada (203).png
+/media/elytus/Dados/CNN_letters_custom/H/Imagem colada (89).png
+/media/elytus/Dados/CNN_letters_custom/J/Imagem colada (116).png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-13 15-25-54.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 15-44-36.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-06 13-40-37.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-06 14-39-47.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-02 17-11-12.png
+/media/elytus/Dados/CNN_letters_custom/4/Imagem colada (52).png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-02 16-42-28.png
+/media/elytus/Dados/CNN_letters_custom/M/Imagem colada.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-13 13-58-12.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-02 16-35-50.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-02-24 15-26-15.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-13 14-01-03.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-06 15-30-04.png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-03-13 14-31-41.png
+/media/elytus/Dados/CNN_letters_custom/F/Captura de tela de 2026-03-06 15-49-06.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-02 17-08-41.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-13 13-59-12.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-02-27 15-22-46.png
+/media/elytus/Dados/CNN_letters_custom/V/Captura de tela de 2026-07-29 17-33-26.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-13 13-56-02.png
+/media/elytus/Dados/CNN_letters_custom/B/Imagem colada (177).png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-02-27 16-36-45.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-13 13-48-03.png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-07-29 17-28-44.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 16-01-59.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-02-27 15-53-15.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-02 17-29-34.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-13 13-48-48.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 15-46-43.png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-03-06 15-37-10.png
+/media/elytus/Dados/CNN_letters_custom/5/Imagem colada (53).png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-06 15-05-59.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-02 17-09-24.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-02-27 16-51-20.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-03-06 15-50-58.png
+/media/elytus/Dados/CNN_letters_custom/A/Imagem colada (37).png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-03-02 17-05-59.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-02-27 15-58-16.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 15-47-44.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-13 13-46-57.png
+/media/elytus/Dados/CNN_letters_custom/5/Imagem colada.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-13 14-37-36.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-06 15-13-40.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-03-02 16-44-02.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-02 16-33-32.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-06 15-42-05.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 15-46-40.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 15-24-56.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-06 16-00-01.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-13 14-40-33.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-06 14-55-43.png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-03-02 16-35-34.png
+/media/elytus/Dados/CNN_letters_custom/4/Imagem colada (5).png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-06 15-26-30.png
+/media/elytus/Dados/CNN_letters_custom/Z/Captura de tela de 2026-03-13 14-44-55.png
+/media/elytus/Dados/CNN_letters_custom/R/Imagem colada.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-13 13-49-07.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-03-02 17-17-57.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-07-29 16-31-03.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 15-00-34.png
+/media/elytus/Dados/CNN_letters_custom/8/Imagem colada (90).png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-02-24 14-59-10.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 14-04-43.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-13 15-03-41.png
+/media/elytus/Dados/CNN_letters_custom/X/Imagem colada (102).png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-02 16-39-09.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-13 14-40-37.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 13-17-56.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-03-13 14-59-07.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-02-24 15-23-31.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 15-40-25.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-06 15-39-14.png
+/media/elytus/Dados/CNN_letters_custom/Q/Captura de tela de 2026-02-24 15-25-51.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-24 15-21-06.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-02 16-31-18.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 14-05-56.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-02-27 16-03-40.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-02-24 15-01-35.png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-13 14-39-19.png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-03-06 13-32-48.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-13 15-22-09.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-06 15-02-20.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-13 15-29-40.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-02-24 15-22-27.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-13 14-10-43.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 15-06-40.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-07-29 18-45-10.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-06 13-41-30.png
+/media/elytus/Dados/CNN_letters_custom/0/Imagem colada (130).png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 13-16-19.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-13 14-06-49.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 13-58-18.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-06 16-05-33.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-02 17-11-19.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-06 14-04-58.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-24 15-19-41.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-02-24 15-25-58.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-02-27 17-14-38.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-06 13-54-40.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-06 15-26-43.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-06 13-41-34.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-02-24 14-58-27.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-02-27 16-33-36.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-13 13-50-11.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-13 14-46-35.png
+/media/elytus/Dados/CNN_letters_custom/W/Captura de tela de 2026-03-13 14-40-11.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-06 13-23-12.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-24 15-00-23.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 14-43-43.png
+/media/elytus/Dados/CNN_letters_custom/0/Imagem colada (154).png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-03-06 13-54-25.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-03-06 13-31-38.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-02-27 16-18-36.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 14-11-53.png
+/media/elytus/Dados/CNN_letters_custom/X/Captura de tela de 2026-03-06 15-42-46.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-06 13-21-07.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-02 17-29-37.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-02 16-41-08.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-03-13 15-32-13.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-13 14-44-00.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-02-24 15-18-11.png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-06 16-06-42.png
+/media/elytus/Dados/CNN_letters_custom/E/Captura de tela de 2026-03-06 13-37-08.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-02 16-44-16.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-06 13-53-39.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-02-27 16-43-07.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-06 14-49-54.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-06 13-42-29.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-03-06 15-02-34.png
+/media/elytus/Dados/CNN_letters_custom/H/Captura de tela de 2026-03-02 17-18-01.png
+/media/elytus/Dados/CNN_letters_custom/E/Imagem colada (96).png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-03-13 15-34-16.png
+/media/elytus/Dados/CNN_letters_custom/U/Imagem colada (16).png
+/media/elytus/Dados/CNN_letters_custom/A/Captura de tela de 2026-03-06 13-40-18.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-07-29 17-34-49.png
+/media/elytus/Dados/CNN_letters_custom/L/Imagem colada (139).png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-03-06 15-37-18.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-03-13 15-37-33.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-03-13 15-28-20.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-07-29 17-44-16.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-03-06 15-13-03.png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-02-24 15-03-17.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-06 13-59-35.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-02 16-35-54.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-06 13-39-05.png
+/media/elytus/Dados/CNN_letters_custom/N/Captura de tela de 2026-03-13 15-04-31.png
+/media/elytus/Dados/CNN_letters_custom/M/Imagem colada (56).png
+/media/elytus/Dados/CNN_letters_custom/3/Captura de tela de 2026-03-06 16-01-09.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-06 16-05-41.png
+/media/elytus/Dados/CNN_letters_custom/0/Imagem colada (105).png
+/media/elytus/Dados/CNN_letters_custom/1/Captura de tela de 2026-08-17 14-48-50.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-02-24 15-00-27.png
+/media/elytus/Dados/CNN_letters_custom/T/Imagem colada (5).png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-02-27 16-43-20.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-13 15-35-42.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-02-24 14-58-31.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-27 17-20-35.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-07-29 18-32-17.png
+/media/elytus/Dados/CNN_letters_custom/9/Captura de tela de 2026-03-06 15-44-48.png
+/media/elytus/Dados/CNN_letters_custom/U/Captura de tela de 2026-07-29 18-44-57.png
+/media/elytus/Dados/CNN_letters_custom/I/Captura de tela de 2026-02-27 16-06-55.png
+/media/elytus/Dados/CNN_letters_custom/0/Captura de tela de 2026-02-27 16-16-32.png
+/media/elytus/Dados/CNN_letters_custom/B/Captura de tela de 2026-03-06 13-38-28.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-07-29 16-46-03.png
+/media/elytus/Dados/CNN_letters_custom/K/Captura de tela de 2026-02-24 15-06-11.png
+/media/elytus/Dados/CNN_letters_custom/R/Captura de tela de 2026-03-13 14-11-36.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-07-29 16-33-05.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 13-42-59.png
+/media/elytus/Dados/CNN_letters_custom/1/Imagem colada (84).png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-02-27 15-49-55.png
+/media/elytus/Dados/CNN_letters_custom/U/Imagem colada (3).png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-02-27 15-43-46.png
+/media/elytus/Dados/CNN_letters_custom/Z/Captura de tela de 2026-02-24 15-00-48.png
+/media/elytus/Dados/CNN_letters_custom/8/Captura de tela de 2026-03-13 14-22-03.png
+/media/elytus/Dados/CNN_letters_custom/7/Imagem colada (40).png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-06 15-15-47.png
+/media/elytus/Dados/CNN_letters_custom/6/Captura de tela de 2026-02-27 16-19-21.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 15-28-35.png
+/media/elytus/Dados/CNN_letters_custom/E/Imagem colada (134).png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-13 15-17-17.png
+/media/elytus/Dados/CNN_letters_custom/F/Imagem colada (173).png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-07-29 18-35-24.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-06 16-25-13.png
+/media/elytus/Dados/CNN_letters_custom/4/Captura de tela de 2026-03-06 14-12-49.png
+/media/elytus/Dados/CNN_letters_custom/Z/Captura de tela de 2026-02-27 17-30-56.png
+/media/elytus/Dados/CNN_letters_custom/S/Captura de tela de 2026-03-02 17-08-05.png
+/media/elytus/Dados/CNN_letters_custom/Y/Captura de tela de 2026-03-13 15-14-39.png
+/media/elytus/Dados/CNN_letters_custom/2/Captura de tela de 2026-02-24 15-14-53.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-07-29 16-55-06.png
+/media/elytus/Dados/CNN_letters_custom/D/Captura de tela de 2026-03-06 14-08-17.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-13 15-37-38.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-06 15-30-36.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-02 17-12-37.png
+/media/elytus/Dados/CNN_letters_custom/L/Captura de tela de 2026-03-02 17-02-38.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-03-13 14-10-23.png
+/media/elytus/Dados/CNN_letters_custom/J/Captura de tela de 2026-03-02 17-25-00.png
+/media/elytus/Dados/CNN_letters_custom/5/Captura de tela de 2026-03-13 15-07-36.png
+/media/elytus/Dados/CNN_letters_custom/C/Captura de tela de 2026-07-29 17-07-02.png
+/media/elytus/Dados/CNN_letters_custom/7/Captura de tela de 2026-03-13 15-04-42.png
+/media/elytus/Dados/CNN_letters_custom/G/Captura de tela de 2026-03-13 14-14-35.png
+/media/elytus/Dados/CNN_letters_custom/P/Captura de tela de 2026-03-13 15-31-51.png
+/media/elytus/Dados/CNN_letters_custom/M/Captura de tela de 2026-03-06 16-27-38.png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-02-24 15-02-25.png
+/media/elytus/Dados/CNN_letters_custom/5/Imagem colada (2).png
+/media/elytus/Dados/CNN_letters_custom/T/Captura de tela de 2026-03-06 14-43-27.png

@@ -11,70 +11,91 @@ import argparse
 import random
 import matplotlib.pyplot as plt
 from tqdm import tqdm
+import datetime
+import sys
+
+class Logger(object):
+    def __init__(self, filename="default.log", stream=sys.stdout):
+        self.terminal = stream
+        self.log = open(filename, 'a')
+
+    def write(self, menssage):
+        self.terminal.write(menssage)
+        self.log.write(menssage)
+        self.log.flush()
+
+    def flush(self):
+        pass
 
 def main():
 
-    datasetPath = "/media/vitor/data/CNN_letters_custom"
-    # datasetPath = "/media/vitor/data/CNN_letters_digit_merge"
-
-    # if os.path.exists("/media/vitor/data/CNN_letters_custom"):
-    #     datasetPath = "/media/vitor/data/CNN_letters_custom"
-    # else:
-    #     datasetPath = "/media/vitor/data/CNN_letters_custom"
-
     parser = argparse.ArgumentParser()
-    parser.add_argument("--epocas", default=16, required=False, type=int)
-    parser.add_argument("--lr", default=0.001, type=float)
-    parser.add_argument("--batch", default=16 ,type=int)
-    parser.add_argument("--fine_tuning", default=False, type=bool)
+    parser.add_argument("--epocas", required=False, type=int, default=16, help='Number of epochs for training (default: 16)')
+    parser.add_argument("--lr", type=float, default=0.001, help='Learning rate for training (default: 0.001)')
+    parser.add_argument("--batch",type=int, default=16, help='Batch size for training (default: 16)')
+    parser.add_argument("--fine_tuning", type=bool, default=False, help='Whether to perform fine-tuning on the model (default: False)')
+    parser.add_argument("--dataset-path", type=str, default="/media/vitor/data/CNN_letters_custom", help='Path to the dataset directory')
+    parser.add_argument("--session", type=str, default='', help='Session name for logging (default: timestamp)')
     args = parser.parse_args()
 
+    datasetPath = args.dataset_path
+    
     #Parametros
     epocas = args.epocas
     learning_rate = args.lr
     batch_size = args.batch
     fine_tuning = args.fine_tuning
     minLoss = 5.0
+
+    device = torch.device(args.device if torch.cuda.is_available() else "cpu")
     
     PATH_GRAFICOS = "grafico"
 
     if not os.path.exists(PATH_GRAFICOS):
         os.makedirs(os.path.join(PATH_GRAFICOS, "treino"), exist_ok=True)
         os.makedirs(os.path.join(PATH_GRAFICOS, "fine_tunning"), exist_ok=True)
+    os.makedirs("logs", exist_ok=True)
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    session_name = f"{args.session}_{timestamp}" if args.session else timestamp
+    log_file = f"logs/{session_name}.log"
 
+    sys.stdout = Logger(log_file, sys.stdout)
+    sys.stderr = Logger(log_file, sys.stderr)
+    print(f"Starting training session: {session_name}")
+    print(f"Logging to: {log_file}")
+    print('='* 50)
 
     digitsClass = []
     file_list = []
-    for pastas in os.listdir(datasetPath):
+    str2cls = {}
+    for i, pastas in enumerate(os.listdir(datasetPath)):
         for imgs in os.listdir(os.path.join(datasetPath, pastas)):
             digitsClass.append(pastas)
             file_list.append(os.path.join(datasetPath, pastas, imgs))
-
+            str2cls[pastas] = i
             
-
     file_list_tupla = list(zip(digitsClass, file_list))
-
-    # print(len(file_list), len(digitsClass))
-
-    # for cls, img in file_list_tupla[:5]:
-    #     print(cls, img)
-    # print('\n\n\n')
-    # classes = list(set(digitsClass))
-    # print(classes, len(classes))
-    # input()
-
     random.shuffle(file_list_tupla)
 
-    # for cls, img in file_list_tupla[:5]:
-    #     print(cls, img)
     
     files_train = file_list_tupla[:int(len(file_list_tupla)*0.8)]
     files_val = file_list_tupla[int(len(file_list_tupla)*0.8):]
 
+    if not os.path.exists("train_files.txt"):
+        with open ('train_files_digits.txt', "w") as f:
+            for file in files_train:
+                # print(file)
+                f.write(file[1] + '\n')
+
     if not os.path.exists("val_files.txt"):
         with open ('val_files_digits.txt', "w") as f:
             for file in files_val:
-                f.write(file + '\n')
+                f.write(file[1] + '\n')
+    
+    if not os.path.exists('str2cls.txt'):
+        with open('str2cls.txt', 'w') as f:
+            for key, value in str2cls.items():
+                f.write(f"{key}:{value}\n")
 
     if fine_tuning == False:
 
@@ -85,23 +106,27 @@ def main():
         v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
 
-        datasetTrain = DatasetDigits(files_train, transforms)
-        datasetVal = DatasetDigits(files_val, transforms)
+        datasetTrain = DatasetDigits(files_train, transforms, str2cls)
+        datasetVal = DatasetDigits(files_val, transforms, str2cls)
 
         dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
         dataLoaderVal = DataLoader(datasetVal, 1, False)
 
-        Cnn = DigitModel()
+        Cnn = DigitModel(n_classes=len(str2cls))
         image, label = next(iter(dataLoaderTrain))
 
-        Cnn = Cnn.cuda()
-        criterio = CrossEntropyLoss().cuda()
+        Cnn = Cnn.to(device)
+        criterio = CrossEntropyLoss().to(device)
         otimizador = SGD(Cnn.parameters(),learning_rate)
 
         listLossTrain = []
         listLossVal = []
         listAccTrain = []
         listAccVal = []
+
+        print(f"Treinamento iniciando com {len(files_train)} imagens de treino e {len(files_val)} imagens de validação.")
+        print(f"Número de classes: {len(str2cls)}")
+        print(f"Treinamento com {epocas} épocas.")
 
         for epoca in range(epocas):
             
@@ -115,8 +140,8 @@ def main():
             pbar = tqdm(dataLoaderTrain, desc=f"epoca {epoca}")
             for (image, label) in pbar:
                 otimizador.zero_grad()
-                image = image.cuda()
-                label = label.cuda()
+                image = image.to(device)
+                label = label.to(device)
                 inferencia = Cnn(image)
                 loss = criterio(inferencia, label)
                 loss.backward()
@@ -143,8 +168,8 @@ def main():
             with torch.no_grad():
                 for iteration, (image, label) in enumerate(dataLoaderVal):
 
-                    image = image.cuda()
-                    label = label.cuda()
+                    image = image.to(device)
+                    label = label.to(device)
 
                     inferencia = Cnn(image)
                     loss = criterio(inferencia, label)
@@ -162,10 +187,11 @@ def main():
 
             if minLoss > totalLossVal:
                 minLoss = totalLossVal
+                if not os.path.exists('best_model'):
+                    os.makedirs('best_model')
                 torch.save(Cnn.state_dict(), 'best_model/ModelDigit.pth')
                 print(f"Melhor modelo encontrado!!!")
             print(f"acurácia validação: {accuracyTotalTrain.item():.4f}, Perda Total na validação {totalLossVal.item():.4f}")
-        #print(f"Fim da epoca {epoca}")
     
         x = range(epocas)
         x = list(x)
@@ -176,16 +202,12 @@ def main():
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino",  "loss_de_treino.png"), dpi=300)
         plt.show()
 
-
-
         y_acc = list(listAccTrain)
         plt.plot(x,y_acc)
         plt.title("Acurácia de treino")
         
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "acc_de_treino.png"), dpi=300)
         plt.show()
-
-
 
         y_LossTrain = list(listLossVal)
         plt.plot(x,y_LossTrain)
@@ -194,14 +216,12 @@ def main():
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "loss_de_val.png"), dpi=300)
         plt.show()
 
-
         y_accVal = list(listAccVal)
         plt.plot(x,y_accVal)
         plt.title("Acurácia na validação")
         plt.savefig(os.path.join(PATH_GRAFICOS, "treino", "acc_de_val.png"), dpi=300)
         plt.show()
         print(listAccVal)
-
 
         with open('loss_treino.txt', 'w') as file:
             for l in listLossTrain:
@@ -220,27 +240,38 @@ def main():
                 file.writelines(l)
 
     else:
-         LoadModel = DigitModel()
-         LoadModel.load_state_dict(torch.load('best_model/Model.pth'))
-         LoadModel.cuda()
-         criterio = CrossEntropyLoss().cuda()
-         otimizador = SGD(LoadModel.parameters(),learning_rate)
+        import torch.nn as nn
 
-         transforms = v2.Compose([
-            v2.ToImage(),
-            v2.RandomResizedCrop(size=(224, 224), antialias=True),
-            v2.RandomHorizontalFlip(p=0.5),
-            v2.ToDtype(torch.float32, scale=True),
-            v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
-            ])
-         
-         datasetTrain = DatasetDigits(files_train, transforms)
-         datasetVal = DatasetDigits(files_val, transforms)
+        LoadModel = DigitModel()
+        LoadModel.load_state_dict(torch.load('best_model/ModelDigit.pth'))
 
-         dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
-         dataLoaderVal = DataLoader(datasetVal, 1, False)
+        topclf = nn.Linear(128, len(str2cls))
+        LoadModel.cls[4] = topclf
 
-         for epoca in range(epocas):
+        LoadModel.to(device)
+        criterio = CrossEntropyLoss().to(device)
+        otimizador = SGD(LoadModel.parameters(),learning_rate)
+
+        transforms = v2.Compose([
+        v2.ToImage(),
+        v2.RandomResizedCrop(size=(128, 128), antialias=True),
+        v2.RandomHorizontalFlip(p=0.5),
+        v2.ToDtype(torch.float32, scale=True),
+        v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+        
+        datasetTrain = DatasetDigits(files_train, transforms, str2cls)
+        datasetVal = DatasetDigits(files_val, transforms, str2cls)
+
+        dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
+        dataLoaderVal = DataLoader(datasetVal, 1, False)
+
+        print(f"Fine tuning iniciando com {len(files_train)} imagens de treino e {len(files_val)} imagens de validação.")
+        print(f"Número de classes: {len(str2cls)}")
+        print(f"Treinamento com {epocas} épocas.")
+
+
+        for epoca in range(epocas):
 
             totalLossTrain = 0.0
             accuracyTotalTrain = 0.0
@@ -251,13 +282,13 @@ def main():
 
             for iteration, (image, label) in enumerate(dataLoaderTrain):
                 otimizador.zero_grad()
-                image = image.cuda()
-                label = label.cuda()
+                image = image.to(device)
+                label = label.to(device)
                 inferencia = LoadModel(image)
                 loss = criterio(inferencia, label)
                 loss.backward()
                 otimizador.step()
-                totalLoss += loss
+                totalLossTrain += loss
                 
                 if iteration % 100 == 0:
                     print(f"epoca {epoca}, iteração: {iteration}, perda {loss.item():.4f}")
@@ -274,8 +305,8 @@ def main():
             with torch.no_grad():
                 for iteration, (image, label) in enumerate(dataLoaderVal):
 
-                    image = image.cuda()
-                    label = label.cuda()
+                    image = image.to(device)
+                    label = label.to(device)
                     inferencia = LoadModel(image)
                     loss = criterio(inferencia, label)
                     totalLossVal += loss

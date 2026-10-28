@@ -1,38 +1,4 @@
-import torch 
 import torch.nn as nn
-
-class CnnModel(nn.Module):
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.backbone = nn.Sequential(
-            DoubbleConv(3,32),
-            DoubbleConv(32,64),
-            nn.MaxPool2d((2,2)),
-            DoubbleConv(64,128),
-            DoubbleConv(128,256),
-            nn.MaxPool2d((2,2)),
-            DoubbleConv(256,512),
-            DoubbleConv(512,1024)
-            )
-        self.cls = nn.Sequential(
-            nn.Flatten(),
-            #mudei de 2 para 32, pois antes tinhas apenas 2 classes (gato e cachorro), agora temos 35 (0-9 e a-z)
-            nn.Linear(1024*56*56,2)
-        )
-
-
-
-
-    def forward(self, x):
-        # print(x.shape)
-        x = self.backbone(x)
-        # print(x.shape)
-        # input()
-        x = self.cls(x)
-        #print(x.shape)
-        return x
-
 
 class DigitModel(nn.Module):
 
@@ -70,7 +36,7 @@ class ConvolucionBlock(nn.Module):
         super(ConvolucionBlock, self).__init__()
         # print(type(inchannels), type(outchannels))
         self.block = nn.Sequential(
-            nn.Conv2d(inchannels,outchannels, (3,3), stride = 1,padding="same"),
+            nn.Conv2d(inchannels,outchannels, (5,3), stride = 1,padding=(2,1)),
             nn.BatchNorm2d(outchannels),
             nn.ReLU(inplace=True),
 

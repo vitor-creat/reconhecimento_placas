@@ -1,10 +1,11 @@
 #!/bin/bash
 
 conda init bash
-conda activate reconhecimento_placa
+conda activate placa
 
-python main.py      \
-    --epocas 8     \
+python mainDigit.py      \
+    --epocas 2     \
     --lr 0.0000001  \
     --batch 16      \
+    --dataset "/media/vitor/Dados/NewLettersDataset" \
     --fine_tuning True
