@@ -13,6 +13,7 @@ class DigitModel(nn.Module):
             nn.MaxPool2d((2,2)),
             SkipConv(128,256)
             )
+
         self.cls = nn.Sequential(
             nn.Flatten(),
             nn.Linear(256*16*16,1024),
@@ -32,6 +33,8 @@ class DigitModel(nn.Module):
 
 # 3 32
 class ConvolucionBlock(nn.Module):
+    # ToDo colocar dropout como valor de entrada no construtor 
+    # como default será de 0.05
     def __init__(self, inchannels, outchannels):
         super(ConvolucionBlock, self).__init__()
         # print(type(inchannels), type(outchannels))
@@ -39,6 +42,7 @@ class ConvolucionBlock(nn.Module):
             nn.Conv2d(inchannels,outchannels, (5,3), stride = 1,padding=(2,1)),
             nn.BatchNorm2d(outchannels),
             nn.ReLU(inplace=True),
+            
 
             # nn.Conv2d(outchannels, outchannels, (3,3), stride = 1,padding="same"),
             # nn.BatchNorm2d(outchannels),
@@ -67,7 +71,7 @@ class SkipConv(nn.Module):
         self.block1=  DoubbleConv(inchannels, int(outchannels/2))
 
         self.block2 = DoubbleConv(int(outchannels/2), outchannels)
-
+        # diminiu as caracteristicas
         self.downsample1 =  nn.Conv2d(inchannels, int(outchannels/2), (1,1))
         self.downsample2 =  nn.Conv2d(int(outchannels/2), outchannels, (1,1))
         
