@@ -1,0 +1,10 @@
+Starting training session: 2026-11-04_15-05-03
+Logging to: logs/2026-11-04_15-05-03.log
+==================================================
+Traceback (most recent call last):
+  File "/home/vitor/Documentos/reconhecimento_placas/mainDigit.py", line 362, in <module>
+    main()
+  File "/home/vitor/Documentos/reconhecimento_placas/mainDigit.py", line 72, in main
+    for i, pastas in enumerate(os.listdir(datasetPath)):
+                               ^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/media/vitor/data/CNN_letters_custom'
