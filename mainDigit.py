@@ -34,7 +34,7 @@ def main():
     parser.add_argument("--lr", type=float, default=0.001, help='Learning rate for training (default: 0.001)')
     parser.add_argument("--batch",type=int, default=16, help='Batch size for training (default: 16)')
     parser.add_argument("--fine_tuning", type=bool, default=False, help='Whether to perform fine-tuning on the model (default: False)')
-    parser.add_argument("--dataset-path", type=str, default="/media/vitor/data/CNN_letters_custom", help='Path to the dataset directory')
+    parser.add_argument("--dataset-path", type=str, default="/home/vitor/Documentos/CNN_letters_custom", help='Path to the dataset directory')
     parser.add_argument("--session", type=str, default='', help='Session name for logging (default: timestamp)')
     args = parser.parse_args()
 
@@ -47,7 +47,7 @@ def main():
     fine_tuning = args.fine_tuning
     minLoss = 5.0
 
-    device = torch.device(args.device if torch.cuda.is_available() else "cpu")
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
     PATH_GRAFICOS = "grafico"
 
