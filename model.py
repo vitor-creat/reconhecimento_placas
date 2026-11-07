@@ -13,13 +13,15 @@ class DigitModel(nn.Module):
             nn.MaxPool2d((2,2)),
             SkipConv(128,256)
             )
-
         self.cls = nn.Sequential(
             nn.Flatten(),
             nn.Linear(256*16*16,1024),
+            nn.BatchNorm1d(1024),
+            nn.ReLU(inplace=True),
             nn.Linear(1024, 512),
-            nn.Linear(512,128),
-            nn.Linear(128,n_classes)
+            nn.BatchNorm1d(512),
+            nn.ReLU(inplace=True),            
+            nn.Linear(512,n_classes)
         )
 
     def forward(self, x):

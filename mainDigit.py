@@ -36,6 +36,7 @@ def main():
     parser.add_argument("--fine_tuning", type=bool, default=False, help='Whether to perform fine-tuning on the model (default: False)')
     parser.add_argument("--dataset-path", type=str, default="/home/vitor/Documentos/CNN_letters_custom", help='Path to the dataset directory')
     parser.add_argument("--session", type=str, default='', help='Session name for logging (default: timestamp)')
+    parser.add_argument("--device", type=str, default='cuda', help='Device to use for training (default: cuda)')
     args = parser.parse_args()
 
     datasetPath = args.dataset_path
@@ -99,15 +100,31 @@ def main():
 
     if fine_tuning == False:
 
-        transforms = v2.Compose([
+        transforms_val = v2.Compose([
         v2.ToImage(),
         v2.Resize((128,128)),
         v2.ToDtype(torch.float32, scale=True),
         v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
         ])
 
-        datasetTrain = DatasetDigits(files_train, transforms, str2cls)
-        datasetVal = DatasetDigits(files_val, transforms, str2cls)
+        transforms_train = v2.Compose([
+        v2.ToImage(),
+        v2.Resize(size=(128, 128), antialias=True),
+        v2.RandomRotation(degrees=8, fill=255),
+        v2.ColorJitter(brightness=0.2, contrast=0.2),
+        v2.RandomAffine(
+            degrees=0,
+            translate=(0.04, 0.04),
+            scale=(0.96, 1.04),
+            fill=255,
+        ),
+        v2.RandomPerspective(distortion_scale=0.15, p=0.3, fill=255),
+        v2.ToDtype(torch.float32, scale=True),
+        v2.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
+        ])
+
+        datasetTrain = DatasetDigits(files_train, transforms_train, str2cls)
+        datasetVal = DatasetDigits(files_val, transforms_val, str2cls)
 
         dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
         dataLoaderVal = DataLoader(datasetVal, 1, False)
@@ -225,19 +242,19 @@ def main():
 
         with open('loss_treino.txt', 'w') as file:
             for l in listLossTrain:
-                file.writelines(l)
+                file.writelines(str(l))
 
         with open('acc_treino.txt', 'w') as file:
             for l in listAccTrain:
-                file.writelines(l)
+                file.writelines(str(l))
 
         with open('loss_val.txt', 'w') as file:
             for l in listLossVal:
-                file.writelines(l)
+                file.writelines(str(l))
 
         with open('acc_val.txt', 'w') as file:
             for l in listAccVal:
-                file.writelines(l)
+                file.writelines(str(l))
 
     else:
         import torch.nn as nn

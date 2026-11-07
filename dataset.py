@@ -21,9 +21,10 @@ class DatasetDigits(Dataset):
         label = self.str2Class[className]
         # print(imageName)
         # input()
-        loadImage = Image.open(imageName)
+        loadImage = Image.open(imageName).convert('RGB')
         npImage = np.array(loadImage)
-        npImage = npImage[...,0:3]
+        
+        # npImage = npImage[...,0:3]
         if self.transforms:
             npImage = self.transforms(npImage)
         return npImage, label
