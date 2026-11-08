@@ -134,7 +134,11 @@ def main():
 
         Cnn = Cnn.to(device)
         criterio = CrossEntropyLoss().to(device)
-        otimizador = SGD(Cnn.parameters(),learning_rate)
+        otimizador = SGD(Cnn.parameters(),learning_rate, momentum=0.9, weight_decay=1e-4)
+        lr_scheduler = torch.optim.lr_scheduler.StepLR(otimizador, step_size=max(1, args.epocas // 3), gamma=0.2)
+
+        # escalador para o gradiente com precisão mista. Serve para diminuir a precisão, economizando memória. Permitindo batches maiores
+        scaler = torch.cuda.amp.GradScaler()
 
         listLossTrain = []
         listLossVal = []
@@ -161,8 +165,9 @@ def main():
                 label = label.to(device)
                 inferencia = Cnn(image)
                 loss = criterio(inferencia, label)
-                loss.backward()
-                otimizador.step()
+                scaler.scale(loss).backward()
+                scaler.step(otimizador)
+                scaler.update()
                 totalLossTrain += loss
                 predictions = torch.argmax(inferencia, dim=1)
 
@@ -201,6 +206,8 @@ def main():
 
             listAccVal.append(accuracyTotalVal)
             listLossVal.append(totalLossVal.item())
+
+            lr_scheduler.step()
 
             if minLoss > totalLossVal:
                 minLoss = totalLossVal
@@ -267,7 +274,7 @@ def main():
 
         LoadModel.to(device)
         criterio = CrossEntropyLoss().to(device)
-        otimizador = SGD(LoadModel.parameters(),learning_rate)
+        otimizador = SGD(LoadModel.parameters(),learning_rate, momentum=0.9, weight_decay=1e-4)
 
         transforms = v2.Compose([
         v2.ToImage(),
