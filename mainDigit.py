@@ -2,7 +2,7 @@ import os
 import torch
 from torchvision.transforms import v2
 from torch.utils.data import DataLoader
-from model import DigitModel
+from model import DigitModel, DigitModelV2
 from dataset import DatasetDigits
 from torch.optim import SGD
 from torch.nn import CrossEntropyLoss
@@ -37,6 +37,7 @@ def main():
     parser.add_argument("--dataset-path", type=str, default="/home/vitor/Documentos/CNN_letters_custom", help='Path to the dataset directory')
     parser.add_argument("--session", type=str, default='', help='Session name for logging (default: timestamp)')
     parser.add_argument("--device", type=str, default='cuda', help='Device to use for training (default: cuda)')
+    parser.add_argument("--num-workers", type=int, default=4, help='Number of workers for data loading (default: 4)')
     args = parser.parse_args()
 
     datasetPath = args.dataset_path
@@ -126,10 +127,10 @@ def main():
         datasetTrain = DatasetDigits(files_train, transforms_train, str2cls)
         datasetVal = DatasetDigits(files_val, transforms_val, str2cls)
 
-        dataLoaderTrain = DataLoader(datasetTrain, batch_size, True)
-        dataLoaderVal = DataLoader(datasetVal, 1, False)
+        dataLoaderTrain = DataLoader(datasetTrain, batch_size, num_workers=args.num_workers, pin_memory=True, shuffle=True, drop_last=True)
+        dataLoaderVal = DataLoader(datasetVal, 1, num_workers=args.num_workers, pin_memory=True, shuffle=False)
 
-        Cnn = DigitModel(n_classes=len(str2cls))
+        Cnn = DigitModelV2(n_classes=len(str2cls))
         image, label = next(iter(dataLoaderTrain))
 
         Cnn = Cnn.to(device)

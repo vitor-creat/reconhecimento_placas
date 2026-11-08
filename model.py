@@ -12,7 +12,7 @@ class DigitModel(nn.Module):
             SkipConv(64,128),
             nn.MaxPool2d((2,2)),
             SkipConv(128,256)
-            )
+        )
         self.cls = nn.Sequential(
             nn.Flatten(),
             nn.Linear(256*16*16,1024),
@@ -27,6 +27,41 @@ class DigitModel(nn.Module):
     def forward(self, x):
         # print(x.shape)
         x = self.backbone(x)
+        # print(x.shape)
+        # input()
+        x = self.cls(x)
+        #print(x.shape)
+        return x
+
+class DigitModelV2(nn.Module):
+
+    def __init__(self, n_classes = 35):
+        super().__init__()
+        self.backbone = nn.Sequential(
+            SkipConv(3,32),
+            nn.MaxPool2d((2,2)),
+            SkipConv(32,64),
+            nn.MaxPool2d((2,2)),
+            SkipConv(64,128),
+            nn.MaxPool2d((2,2)),
+            SkipConv(128,256)
+        )
+        self.avg_pool = nn.AdaptiveAvgPool2d((3, 2))
+        self.cls = nn.Sequential(
+            nn.Flatten(),
+            nn.Linear(256*3*2,1024),
+            nn.BatchNorm1d(1024),
+            nn.ReLU(inplace=True),
+            nn.Linear(1024, 512),
+            nn.BatchNorm1d(512),
+            nn.ReLU(inplace=True),            
+            nn.Linear(512,n_classes)
+        )
+
+    def forward(self, x):
+        # print(x.shape)
+        x = self.backbone(x)
+        x = self.avg_pool(x)
         # print(x.shape)
         # input()
         x = self.cls(x)
