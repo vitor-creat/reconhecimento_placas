@@ -23,9 +23,10 @@ from dataset import PlacaDataset
 from engine import Engine
 from model import CRNN
 
-ds_path = 'caminho/para/o/dataset'
+ds_path = '/media/vitor/Dados/tbFcZE-RodoSol-ALPR/images/cars-br'
 
 data = glob.glob(os.path.join(ds_path, '*.jpg'))
+dataTxt = glob.glob(os.path.join(ds_path, '*txt'))
 path = ds_path
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -46,16 +47,21 @@ num_class = len(mapping) + 1
 images = []
 labels = []
 datas = collections.defaultdict(list)
-for d in data:
+for d, arquivo_txt in zip(data, dataTxt):
     x = d.split('/')[-1]
-    plate_str = x.split('.')[0]
+
+
+    placa = []
+    with open(arquivo_txt, "r") as f:
+        placa = f.readlines()
+    plate_str = placa[1].split(":")[1].strip()
     if len(plate_str) != 7:
         print(f"Ignorando arquivo com tamanho diferente de 7 ({len(plate_str)}): {x}")
         continue
     datas['image'].append(x)
     datas['label'].append([mapping[i] for i in plate_str])
 df = pd.DataFrame(datas)
-print(df.head())
+# print(df.head())
 
 df_train, df_test = train_test_split(df, test_size=0.2, shuffle=True)
 print(f"Train: {len(df_train)}")
