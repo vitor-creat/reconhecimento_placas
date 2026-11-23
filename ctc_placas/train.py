@@ -6,11 +6,13 @@ import collections
 
 from tqdm import tqdm
 
+import datetime
 
 from PIL import Image
 
 from sklearn.model_selection import train_test_split
-
+from ultralytics import YOLO
+from pathlib import Path
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -25,6 +27,7 @@ from model import CRNN
 
 ds_path = '/media/vitor/Dados/tbFcZE-RodoSol-ALPR/images/cars-br'
 
+detect_model = YOLO(Path(".","ctc_placas","detection","best.pt"))
 data = glob.glob(os.path.join(ds_path, '*.jpg'))
 dataTxt = glob.glob(os.path.join(ds_path, '*txt'))
 path = ds_path
@@ -83,11 +86,11 @@ transform_val = T2.Compose([
     T2.ToTensor(),
 ])
 
-train_data = PlacaDataset(path, df_train, transform_train)
-test_data = PlacaDataset(path, df_test, transform_val)
+train_data = PlacaDataset(path, df_train, detect_model,transform_train)
+test_data = PlacaDataset(path, df_test, detect_model,transform_val)
 
-train_loader = DataLoader(train_data, batch_size=16, shuffle=True, num_workers=4, pin_memory=True, drop_last=True)
-test_loader = DataLoader(test_data, batch_size=8, num_workers=4, pin_memory=True, drop_last=True)
+train_loader = DataLoader(train_data, batch_size=16, shuffle=True, num_workers=0, pin_memory=True, drop_last=True)
+test_loader = DataLoader(test_data, batch_size=8, num_workers=0, pin_memory=True, drop_last=True)
 
 
 
@@ -95,13 +98,18 @@ model = CRNN(in_channels=1, output=num_class).to(DEVICE)
 optimizer = optim.Adam(model.parameters(), lr=1e-4)
 criterion = nn.CTCLoss()
 
-engine = Engine(model, optimizer, criterion, device=DEVICE, epochs=50)
+engine = Engine(model, optimizer, criterion,device=DEVICE, epochs=50, batch=16)
 engine.fit(train_loader)
 outs, loss = engine.evaluate(test_loader)
 
 
 print('Loss de validação: ', loss)
 # print(outs)
+
+os.makedirs("logs", exist_ok=True)
+timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+session_name = f"{timestamp}"
+log_file = f"logs/{session_name}.log"
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -111,7 +119,7 @@ ids = np.random.randint(len(data))
 image = data[ids]
 out = engine.predict(image)[0]
 
-print(len(out))
+# print(len(out))
 
 def show_prediction(out, image):
     gt = image.split('/')[-1].split('.')[0]

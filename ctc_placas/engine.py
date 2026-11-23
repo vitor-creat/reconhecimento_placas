@@ -8,10 +8,11 @@ import collections
 import numpy as np
 
 class Engine:
-    def __init__(self, model, optimizer, criterion, epochs=50, early_stop=False, device='cpu'):
+    def __init__(self, model, optimizer, criterion, batch,epochs=8,early_stop=False, device='cpu'):
         self.model = model
         self.optimizer = optimizer
         self.criterion = criterion
+        self.batch = batch
         self.epochs = epochs
         self.early_stop = early_stop
         self.device = device
@@ -36,8 +37,10 @@ class Engine:
 
                 self.optimizer.step()
 
+                self.prediction = torch.argmax(out)
+                acc = torch.sum(self.prediction == target) / self.batch 
 
-                tk.set_postfix({'Epoch':epoch+1, 'Loss' : loss.item()})
+                tk.set_postfix({'Epoch':epoch+1, 'Loss' : loss.item(), 'acc': acc.item()})
             loss_epoch = np.array(loss_epoch).mean()
             print(f'epoch loss: {loss_epoch}')
 
