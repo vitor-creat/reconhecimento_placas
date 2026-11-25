@@ -6,6 +6,8 @@ from PIL import Image
 from tqdm import tqdm
 import collections
 import numpy as np
+import matplotlib.pyplot as plt
+import os
 
 class Engine:
     def __init__(self, model, optimizer, criterion, batch,epochs=8,early_stop=False, device='cpu', mapping_inv=None):
@@ -17,6 +19,10 @@ class Engine:
         self.early_stop = early_stop
         self.device = device
         self.mapping_inv = mapping_inv
+        self.val_vis = 'saved_images'
+
+        if not os.path.exists(self.val_vis):
+            os.makedirs(self.val_vis)
 
     def _decode_ctc(self, out, target):
         preds = out.permute(1, 0, 2).argmax(dim=2)
@@ -84,11 +90,19 @@ class Engine:
                     accuracy = torch.sum(predictions == label) / label.numel()
                     totalAccVal += accuracy.item()
                     pbar.set_postfix(loss=f"{loss.item():.4f}", acc=accuracy.item())
+                
+                self.visualize_sample(image[0], predictions[0], epoch)
 
             totalLossVal /= len(val_dataloader)
             totalAccVal /= len(val_dataloader)
             print(f"Epoch {epoch + 1}: Loss train: {totalLosstrain:.4f}, Acc train: {accuracyTotalTrain:.4f}, Loss val: {totalLossVal:.4f}, Acc val: {totalAccVal:.4f}")
 
+
+    def visualize_sample(self, tensor, pred, epoch):
+        image = T.ToPILImage()(tensor[0].cpu())
+        pred = pred[pred > 0]
+        pred_name = ''.join([self.mapping_inv[int(i)] for i in pred.cpu().numpy()])
+        image.save(os.path.join(self.val_vis, f'epoch_{epoch}_{pred_name}.png'))
 
     def evaluate(self, dataloader):
         self.model.eval()
