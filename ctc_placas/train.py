@@ -27,12 +27,18 @@ from model import CRNN
 
 ds_path = '/media/vitor/Dados/tbFcZE-RodoSol-ALPR/images/cars-br'
 
-detect_model = YOLO(Path(".","ctc_placas","detection","best.pt"))
-data = glob.glob(os.path.join(ds_path, '*.jpg'))
-dataTxt = glob.glob(os.path.join(ds_path, '*txt'))
+detect_model = YOLO(Path("best.pt"))
+data = sorted(glob.glob(os.path.join(ds_path, '*.jpg')))
+dataTxt = []
+for d in data:
+    dataTxt.append(d.replace('jpg', 'txt'))
+
 path = ds_path
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
+# print(data[20:30])
+# print(dataTxt[20:30])
+# input()
 
 all_letters = string.ascii_uppercase + string.digits
 
@@ -98,8 +104,8 @@ model = CRNN(in_channels=1, output=num_class).to(DEVICE)
 optimizer = optim.Adam(model.parameters(), lr=1e-4)
 criterion = nn.CTCLoss()
 
-engine = Engine(model, optimizer, criterion,device=DEVICE, epochs=50, batch=16)
-engine.fit(train_loader)
+engine = Engine(model, optimizer, criterion,device=DEVICE, epochs=50, batch=16, mapping_inv=mapping_inv)
+engine.fit(train_loader, test_loader)
 outs, loss = engine.evaluate(test_loader)
 
 
