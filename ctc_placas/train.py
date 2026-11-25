@@ -80,7 +80,7 @@ df_train.reset_index(drop=True, inplace=True)
 df_test.reset_index(drop=True, inplace=True)
 
 transform_train = T2.Compose([
-    T2.Resize((256, 512)),
+    T2.Resize((64, 256)),
     T2.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
     T2.GaussianBlur(kernel_size=3, sigma=1),
     T2.RandomPerspective(distortion_scale=0.2, p=0.5),
@@ -88,7 +88,7 @@ transform_train = T2.Compose([
 ])
 
 transform_val = T2.Compose([
-    T2.Resize((256, 512)),
+    T2.Resize((64, 256)),
     T2.ToTensor(),
 ])
 

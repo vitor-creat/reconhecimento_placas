@@ -2,12 +2,14 @@ import torch
 import torch.nn as nn
 
 class Bidirectional(nn.Module):
-    def __init__(self, inp, hidden, out, lstm=True):
+    def __init__(self, inp, hidden, out, lstm=True, num_layers=2, dropout=0):
         super(Bidirectional, self).__init__()
+
+        # é melhor uma rede menor com mais camadas do que uma grande com poucas camadas
         if lstm:
-            self.rnn = nn.LSTM(inp, hidden, bidirectional=True)
+            self.rnn = nn.LSTM(inp, hidden, num_layers=num_layers, bidirectional=True, dropout=dropout)
         else:
-            self.rnn = nn.GRU(inp, hidden, bidirectional=True)
+            self.rnn = nn.GRU(inp, hidden, num_layers=num_layers, bidirectional=True, dropout=dropout)
         self.embedding = nn.Linear(hidden*2, out)
     def forward(self, X):
         recurrent, _ = self.rnn(X)
@@ -35,9 +37,13 @@ class CRNN(nn.Module):
             nn.AdaptiveAvgPool2d((1, None))
         )
 
-        self.linear = nn.Linear(256, 256)
-        self.bn1 = nn.BatchNorm1d(256)
-        self.rnn = Bidirectional(256, 1024, output+1)
+        self.linear = nn.Sequential(
+            nn.Linear(256, 256),
+            nn.BatchNorm1d(64),
+            nn.ReLU(),
+        )
+        # dropout pra tentar evitar overfitting
+        self.rnn = Bidirectional(256, 512, output, dropout=0.1)
 
     def forward(self, X, y=None, criterion = None):
         out = self.cnn(X)
@@ -67,8 +73,8 @@ class CRNN(nn.Module):
         if bn:
             conv = [
                 nn.Conv2d(inp, out, kernel, stride=stride, padding=padding),
+                nn.BatchNorm2d(out),
                 nn.ReLU(),
-                nn.BatchNorm2d(out)
             ]
         else:
             conv = [
