@@ -8,7 +8,7 @@ import collections
 import numpy as np
 
 class Engine:
-    def __init__(self, model, optimizer, criterion, batch,epochs=8,early_stop=False, device='cpu'):
+    def __init__(self, model, optimizer, criterion, batch,epochs=8,early_stop=False, device='cpu', mapping_inv=None):
         self.model = model
         self.optimizer = optimizer
         self.criterion = criterion
@@ -16,13 +16,28 @@ class Engine:
         self.epochs = epochs
         self.early_stop = early_stop
         self.device = device
+        self.mapping_inv = mapping_inv
 
-    def fit(self, dataloader):
+    def _decode_ctc(self, out, target):
+        preds = out.permute(1, 0, 2).argmax(dim=2)
+        max_len = target.size(1)
+        decoded_preds = torch.zeros((preds.size(0), max_len), dtype=target.dtype, device=self.device)
+
+        for i, p in enumerate(preds):
+            p = torch.unique_consecutive(p)
+            p = p[p > 0] 
+            length = min(len(p), max_len)
+            decoded_preds[i, :length] = p[:length]
+
+        return decoded_preds
+
+    def fit(self, dataloader, val_dataloader):
         hist_loss = []
         for epoch in range(self.epochs):
             self.model.train()
             tk = tqdm(dataloader, total=len(dataloader))
-            loss_epoch = [];
+            loss_epoch = []
+            acc_epoch = []
             for data, target in tk:
                 data = data.to(device=self.device)
                 target = target.to(device=self.device)
@@ -37,12 +52,43 @@ class Engine:
 
                 self.optimizer.step()
 
-                self.prediction = torch.argmax(out)
-                acc = torch.sum(self.prediction == target) / self.batch 
+                self.prediction = self._decode_ctc(out, target)
 
-                tk.set_postfix({'Epoch':epoch+1, 'Loss' : loss.item(), 'acc': acc.item()})
-            loss_epoch = np.array(loss_epoch).mean()
-            print(f'epoch loss: {loss_epoch}')
+                # print(self.prediction)
+                # print(target)
+                # input()
+
+                acc = torch.sum(self.prediction == target) / target.numel()
+                acc_epoch.append(acc.item())
+
+                tk.set_postfix({'Epoch': epoch + 1, 'Loss': loss.item(), 'acc': acc.item()})
+
+            totalLosstrain = np.array(loss_epoch).mean()
+            accuracyTotalTrain = np.array(acc_epoch).mean()
+            print(f'epoch loss: {totalLosstrain:.4f} | epoch acc: {accuracyTotalTrain:.4f}')
+
+            totalLossVal = 0.0
+            totalAccVal = 0.0
+            self.model.eval()
+            pbar = tqdm(val_dataloader, total=len(val_dataloader))
+            with torch.no_grad():
+                for (image, label) in pbar:
+                    image = image.to(self.device)
+                    label = label.to(self.device)
+                    
+                    outputs, loss = self.model(image, label, criterion=self.criterion)
+                    
+                    totalLossVal += loss.item()
+                    predictions = self._decode_ctc(outputs, label)
+
+                    accuracy = torch.sum(predictions == label) / label.numel()
+                    totalAccVal += accuracy.item()
+                    pbar.set_postfix(loss=f"{loss.item():.4f}", acc=accuracy.item())
+
+            totalLossVal /= len(val_dataloader)
+            totalAccVal /= len(val_dataloader)
+            print(f"Epoch {epoch + 1}: Loss train: {totalLosstrain:.4f}, Acc train: {accuracyTotalTrain:.4f}, Loss val: {totalLossVal:.4f}, Acc val: {totalAccVal:.4f}")
+
 
     def evaluate(self, dataloader):
         self.model.eval()
