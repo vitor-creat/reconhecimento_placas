@@ -9,17 +9,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
+from utils import save_model
+
 class Engine:
-    def __init__(self, model, optimizer, criterion, batch,epochs=8,early_stop=False, device='cpu', mapping_inv=None):
+    def __init__(self, model, optimizer, criterion, epochs=8, early_stop=False, device='cpu', mapping_inv=None, experiment_name=None):
         self.model = model
         self.optimizer = optimizer
         self.criterion = criterion
-        self.batch = batch
         self.epochs = epochs
         self.early_stop = early_stop
         self.device = device
         self.mapping_inv = mapping_inv
         self.val_vis = 'saved_images'
+        self.experiment_name = experiment_name
 
         if not os.path.exists(self.val_vis):
             os.makedirs(self.val_vis)
@@ -75,6 +77,8 @@ class Engine:
 
             totalLossVal = 0.0
             totalAccVal = 0.0
+            best_loss = float('inf')
+
             self.model.eval()
             pbar = tqdm(val_dataloader, total=len(val_dataloader))
             with torch.no_grad():
@@ -91,11 +95,18 @@ class Engine:
                     totalAccVal += accuracy.item()
                     pbar.set_postfix(loss=f"{loss.item():.4f}", acc=accuracy.item())
                 
-                self.visualize_sample(image[0], predictions[0], epoch)
+            self.visualize_sample(image[0], predictions[0], epoch)
 
             totalLossVal /= len(val_dataloader)
             totalAccVal /= len(val_dataloader)
+            
+            if totalLossVal < best_loss:
+                best_loss = totalLossVal
+                save_model(self.model, f"{self.experiment_name}/models", f"best_model.pth")
+                print('Novo melhor modelo encontrado. Modelo salvo!')
+            
             print(f"Epoch {epoch + 1}: Loss train: {totalLosstrain:.4f}, Acc train: {accuracyTotalTrain:.4f}, Loss val: {totalLossVal:.4f}, Acc val: {totalAccVal:.4f}")
+
 
 
     def visualize_sample(self, tensor, pred, epoch):
@@ -130,7 +141,7 @@ class Engine:
     def predict(self, image):
         image = Image.open(image).convert('L')
         transform_val = T.Compose([
-            T.Resize((256, 512)),
+            T.Resize((64, 256)),
             T.ToTensor(),
         ])
         image_tensor = transform_val(image)

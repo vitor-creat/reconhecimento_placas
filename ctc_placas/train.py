@@ -24,17 +24,47 @@ import torch.optim as optim
 from dataset import PlacaDataset
 from engine import Engine
 from model import CRNN
+import argparse
 
-ds_path = '/media/vitor/Dados/tbFcZE-RodoSol-ALPR/images/cars-br'
+from utils import save_model, load_model
 
-detect_model = YOLO(Path("best.pt"))
+
+parser = argparse.ArgumentParser(description='Treinar modelo CTC para reconhecimento de placas')
+parser.add_argument('--epochs', type=int, default=10, help='Número de épocas')
+parser.add_argument('--batch-size', type=int, default=16, help='Tamanho do batch')
+parser.add_argument('--learning-rate', type=float, default=1e-4, help='Taxa de aprendizado')
+parser.add_argument('--data-path', type=str, default='/media/vitor/Dados/tbFcZE-RodoSol-ALPR/images/cars-br', help='Caminho para os dados')
+parser.add_argument('--yolo-weights', type=str, default='best.pt', help='Caminho para os pesos do modelo YOLO')
+parser.add_argument('--experiment-name', type=str, default='results', help='Nome do experimento')
+
+
+args = parser.parse_args()
+
+DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+
+epochs = args.epochs
+batch_size = args.batch_size
+learning_rate = args.learning_rate
+data_path = args.data_path
+yolo_weights = args.yolo_weights
+
+
+ds_path = data_path
+
+os.makedirs(f'{args.experiment_name}/models', exist_ok=True)
+timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+session_name = f"{timestamp}"
+log_file = f"{args.experiment_name}/{session_name}.log"
+
+detect_model = YOLO(Path(yolo_weights))
 data = sorted(glob.glob(os.path.join(ds_path, '*.jpg')))
 dataTxt = []
 for d in data:
     dataTxt.append(d.replace('jpg', 'txt'))
 
 path = ds_path
-DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
 
 # print(data[20:30])
 # print(dataTxt[20:30])
@@ -95,16 +125,16 @@ transform_val = T2.Compose([
 train_data = PlacaDataset(path, df_train, detect_model,transform_train)
 test_data = PlacaDataset(path, df_test, detect_model,transform_val)
 
-train_loader = DataLoader(train_data, batch_size=16, shuffle=True, num_workers=0, pin_memory=True, drop_last=True)
-test_loader = DataLoader(test_data, batch_size=8, num_workers=0, pin_memory=True, drop_last=True)
+train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True, num_workers=0, pin_memory=True, drop_last=True)
+test_loader = DataLoader(test_data, batch_size=1, num_workers=0, pin_memory=True, drop_last=True)
 
 
 
 model = CRNN(in_channels=1, output=num_class).to(DEVICE)
-optimizer = optim.Adam(model.parameters(), lr=1e-4)
+optimizer = optim.Adam(model.parameters(), lr=learning_rate)
 criterion = nn.CTCLoss()
 
-engine = Engine(model, optimizer, criterion,device=DEVICE, epochs=50, batch=16, mapping_inv=mapping_inv)
+engine = Engine(model, optimizer, criterion,device=DEVICE, epochs=epochs, mapping_inv=mapping_inv, experiment_name=args.experiment_name)
 engine.fit(train_loader, test_loader)
 outs, loss = engine.evaluate(test_loader)
 
@@ -112,10 +142,7 @@ outs, loss = engine.evaluate(test_loader)
 print('Loss de validação: ', loss)
 # print(outs)
 
-os.makedirs("logs", exist_ok=True)
-timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-session_name = f"{timestamp}"
-log_file = f"logs/{session_name}.log"
+
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -129,7 +156,7 @@ out = engine.predict(image)[0]
 
 def show_prediction(out, image):
     gt = image.split('/')[-1].split('.')[0]
-    imagePIL = Image.open(image).convert('L')
+    imagePIL = Image.open(image)
 
     pred = ''
     then = 0
