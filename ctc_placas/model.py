@@ -39,7 +39,7 @@ class CRNN(nn.Module):
 
         self.linear = nn.Sequential(
             nn.Linear(256, 256),
-            nn.BatchNorm1d(64),
+            nn.BatchNorm1d(256),
             nn.ReLU(),
         )
         # dropout pra tentar evitar overfitting
@@ -51,7 +51,7 @@ class CRNN(nn.Module):
 
         out = out.view(N, -1, h)
         out = out.permute(0, 2, 1)
-        out = self.linear(out)
+        out = self.linear(out.reshape(N * h, -1)).view(N, h, -1)
 
         out = out.permute(1, 0, 2)
         out = self.rnn(out)
